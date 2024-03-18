@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public Vector2 CurrentMovementInput { get; private set; }
     public bool IsRunPressed { get; private set; }
     public bool IsJumpPressed { get; private set; }
+    public bool IsChangeCameraPressed { get; private set; }
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,6 +27,14 @@ public class InputManager : MonoBehaviour
         //Esto se ejecuta cuando el personaje pulsa espacio o el boton del gamepad
         input.Player.Jump.started += onJumpInput;
         input.Player.Jump.canceled += onJumpInput;
+        //Esto se ejecuta cuando el personaje pulsa C o el boton de la izquierda del dpad
+        input.Player.ChangeCamera.started += onChangeCameraInput;
+        input.Player.ChangeCamera.canceled += onChangeCameraInput;
+    }
+
+    private void onChangeCameraInput(InputAction.CallbackContext context)
+    {
+        IsChangeCameraPressed = context.ReadValueAsButton();
     }
 
     private void onJumpInput(InputAction.CallbackContext context)
