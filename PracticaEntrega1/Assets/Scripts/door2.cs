@@ -15,20 +15,23 @@ public class door2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(firstTime);
-        if(Key.KeyAmount == 1 && !firstTime)
+        if(!other.CompareTag("door"))
         {
-            thedoor2.Play("open_door2");
-        }
+            if (Key.KeyAmount == 1 && !firstTime)
+            {
+                thedoor2.Play("open_door2");
+            }
 
-        if(Key.KeyAmount == 0)
-        {
-            firstTime = true;
+            if (Key.KeyAmount == 0)
+            {
+                firstTime = true;
+            }
+            else
+            {
+                firstTime = false;
+            }
         }
-        else
-        {
-            firstTime = false;
-        }
+       
     }
 
     private void OnTriggerExit(Collider other)

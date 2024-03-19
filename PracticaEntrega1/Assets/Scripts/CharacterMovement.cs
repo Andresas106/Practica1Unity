@@ -235,8 +235,6 @@ public class CharacterMovement : MonoBehaviour
         {
 
             movementSpeedMultiplier = 0.5f;
-
-            Debug.Log("watered");
         }
         //si no la tornem al valor 1
         else
