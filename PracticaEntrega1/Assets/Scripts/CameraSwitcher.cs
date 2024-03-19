@@ -14,31 +14,40 @@ public class CameraSwitcher : MonoBehaviour
     private bool isFirstPersonActive = false;
     private InputManager inputManager;
     private bool isChangeCameraPressed;
+    private bool isChangeCameraPressedThisFrame = false;
 
     void Start()
     {
         inputManager = GetComponent<InputManager>();
         // Configurar prioridades iniciales
-        thirdPersonCamera.Priority = 10;
+        thirdPersonCamera.Priority = 1;
         firstPersonCamera.Priority = 0;
     }
 
-    void Update()
+    void LateUpdate()
     {
         isChangeCameraPressed = inputManager.IsChangeCameraPressed;
 
         // Detectar entrada para cambiar de cámara (por ejemplo, una tecla)
-        if (isChangeCameraPressed)
+        if (isChangeCameraPressed && !isChangeCameraPressedThisFrame)
         {
             if (isFirstPersonActive)
             {
+                
                 isFirstPersonActive = false;
             }
             else {
                 isFirstPersonActive = true;
-            } 
+            }
+
+            Debug.Log(isFirstPersonActive);
             // Alternar entre primera y tercera persona
+            isChangeCameraPressedThisFrame = true;
             SwitchCamera();
+        }
+        else if(!isChangeCameraPressed)
+        {
+            isChangeCameraPressedThisFrame = false;
         }
     }
 
@@ -48,14 +57,28 @@ public class CameraSwitcher : MonoBehaviour
         if (isFirstPersonActive)
         {
             // Activar cámara en primera persona y desactivar tercera persona
+            SetModelVisibility(false);
             thirdPersonCamera.Priority = 0;
-            firstPersonCamera.Priority = 10;
+            firstPersonCamera.Priority = 1;
         }
         else
         {
             // Activar cámara en tercera persona y desactivar primera persona
-            thirdPersonCamera.Priority = 10;
+            SetModelVisibility(true);
+            thirdPersonCamera.Priority = 1;
             firstPersonCamera.Priority = 0;
+        }
+    }
+
+    void SetModelVisibility(bool isVisible)
+    {
+        // Obtener todos los componentes Renderer del modelo del personaje
+        Renderer[] renderers = playerModel.GetComponentsInChildren<Renderer>();
+
+        // Iterar a través de los componentes Renderer y activar/desactivar la renderización
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.enabled = isVisible;
         }
     }
 }
