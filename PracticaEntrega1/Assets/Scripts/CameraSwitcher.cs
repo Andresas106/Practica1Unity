@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using Cinemachine;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class CameraSwitcher : MonoBehaviour
     public CinemachineFreeLook thirdPersonCamera;
     public CinemachineVirtualCamera firstPersonCamera;
     public GameObject playerModel; // Referencia al modelo del personaje
+    public Camera mainCamera;
 
 
 
@@ -53,32 +55,26 @@ public class CameraSwitcher : MonoBehaviour
 
     void SwitchCamera()
     {
+
         // Cambiar entre primera y tercera persona
         if (isFirstPersonActive)
         {
             // Activar cámara en primera persona y desactivar tercera persona
-            SetModelVisibility(false);
             thirdPersonCamera.Priority = 0;
             firstPersonCamera.Priority = 1;
+
+            mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("player"));
         }
         else
         {
             // Activar cámara en tercera persona y desactivar primera persona
-            SetModelVisibility(true);
             thirdPersonCamera.Priority = 1;
             firstPersonCamera.Priority = 0;
+
+            mainCamera.cullingMask |= (1 << LayerMask.NameToLayer("player"));
+
         }
     }
 
-    void SetModelVisibility(bool isVisible)
-    {
-        // Obtener todos los componentes Renderer del modelo del personaje
-        Renderer[] renderers = playerModel.GetComponentsInChildren<Renderer>();
 
-        // Iterar a través de los componentes Renderer y activar/desactivar la renderización
-        foreach (Renderer renderer in renderers)
-        {
-            renderer.enabled = isVisible;
-        }
-    }
 }

@@ -34,6 +34,7 @@ public class InputManager : MonoBehaviour
 
         input.Player.Dance.started += onDanceInput;
         input.Player.Dance.canceled += onDanceInput;
+
     }
 
     private void onDanceInput(InputAction.CallbackContext context)
