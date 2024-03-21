@@ -42,7 +42,6 @@ public class CameraSwitcher : MonoBehaviour
                 isFirstPersonActive = true;
             }
 
-            Debug.Log(isFirstPersonActive);
             // Alternar entre primera y tercera persona
             isChangeCameraPressedThisFrame = true;
             SwitchCamera();
@@ -63,6 +62,9 @@ public class CameraSwitcher : MonoBehaviour
             thirdPersonCamera.Priority = 0;
             firstPersonCamera.Priority = 1;
 
+            // Rotar camara de primera persona hacia donde esta mirando el personaje
+            RotateCamera();
+
             mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("player"));
         }
         else
@@ -73,6 +75,20 @@ public class CameraSwitcher : MonoBehaviour
 
             mainCamera.cullingMask |= (1 << LayerMask.NameToLayer("player"));
 
+        }
+    }
+
+    void RotateCamera()
+    {
+        // Calcular la dirección hacia la que mira el personaje
+        Vector3 lookDirection = playerModel.transform.forward;
+
+        // Orientar el POV de la cámara en primera persona hacia la dirección de mira del personaje
+        CinemachinePOV pov = firstPersonCamera.GetCinemachineComponent<CinemachinePOV>();
+        if (pov != null)
+        {
+            pov.m_HorizontalAxis.Value = Mathf.Atan2(lookDirection.x, lookDirection.z) * Mathf.Rad2Deg;
+            pov.m_VerticalAxis.Value = Mathf.Asin(lookDirection.y) * Mathf.Rad2Deg;
         }
     }
 
