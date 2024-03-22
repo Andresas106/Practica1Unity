@@ -24,6 +24,8 @@ public class CameraSwitcher : MonoBehaviour
         // Configurar prioridades iniciales
         thirdPersonCamera.Priority = 1;
         firstPersonCamera.Priority = 0;
+
+        Cursor.visible = false;
     }
 
     void LateUpdate()

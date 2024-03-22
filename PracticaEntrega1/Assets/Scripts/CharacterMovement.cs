@@ -211,12 +211,7 @@ public class CharacterMovement : MonoBehaviour
 
         currentRunMovement.x = moveDirection.x * 6.0f * movementSpeedMultiplier;
         currentRunMovement.z = moveDirection.z * 6.0f * movementSpeedMultiplier;
-        //Afegim multiplicador que modivica la velocitat del jugador en aigua
-        //currentMovement.x = currentMovementInput.x* movementSpeedMultiplier;
-        //currentMovement.z = currentMovementInput.y* movementSpeedMultiplier;
 
-        //currentRunMovement.x = currentMovementInput.x * 5.0f* movementSpeedMultiplier;
-        //currentRunMovement.z = currentMovementInput.y * 5.0f * movementSpeedMultiplier;
 
     }
 
