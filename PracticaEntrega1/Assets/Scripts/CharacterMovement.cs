@@ -233,15 +233,13 @@ public class CharacterMovement : MonoBehaviour
         //si està en aigua multipliquem la velocitat per 0.5
         if (IsWatered())
         {
-
             movementSpeedMultiplier = 0.5f;
-            //animator.SetBool("isSwimming", true);
         }
+
         //si no la tornem al valor 1
         else
         {
             movementSpeedMultiplier = 1f;
-            //animator.SetBool("isSwimming", false);
         }
     }
    
