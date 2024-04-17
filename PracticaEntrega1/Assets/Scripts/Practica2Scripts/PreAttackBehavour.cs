@@ -1,34 +1,49 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class IdleBehavour : StateMachineBehaviour
+
+
+public class PreAttackBehavour : StateMachineBehaviour
 {
-    //Calcular la distanci necesiutamos la posicion
     Transform _player;
     float _timer;
-    //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    private float Speed = 2;
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
         _timer = 0;
+
+        Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
+
+        animator.transform.LookAt(rdmPointInPlane);
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Check Triggers
         bool isTimeUp = CheckTime();
         bool isPlayerClose = CheckPlayer(animator.transform);
-        animator.SetBool("IsPatrolling", isTimeUp);
-        animator.SetBool("IsChasing", isPlayerClose);
+
+        //Hay que poner que es falso el isTimeUp
+        animator.SetBool("IsAttacking", !isTimeUp);
+        animator.SetBool("IsOnRange", isPlayerClose);
+
+        //Do Stuff
+        Move(animator.transform);
+    }
+
+    private void Move(Transform mySelf)
+    {
+        mySelf.Translate(mySelf.forward * Speed * Time.deltaTime);
     }
 
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 8;
+        return distance < 4;
     }
 
     private bool CheckTime()
@@ -38,9 +53,4 @@ public class IdleBehavour : StateMachineBehaviour
         return _timer > 2;
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
 }
