@@ -51,6 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
+<<<<<<< HEAD
                     "name": "Attack",
                     "type": "Button",
                     "id": "18b63c43-0f24-4c16-96e0-3e6a7ba03ed8",
@@ -63,6 +64,11 @@
                     "name": "StrongAttack",
                     "type": "Button",
                     "id": "b8de9f7b-7f2e-4a5b-bff7-3dd8d3f3ec3f",
+=======
+                    "name": "MeleeAttack",
+                    "type": "Button",
+                    "id": "0d58c59f-452b-4f75-b954-c01c0cb37fb2",
+>>>>>>> 91987dcf6d7ec07c02d08cfbce386397649e5844
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -226,6 +232,7 @@
                 },
                 {
                     "name": "",
+<<<<<<< HEAD
                     "id": "3db2af83-ccfd-4521-9a61-bfae20b9fd63",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -267,6 +274,16 @@
                     "action": "StrongAttack",
                     "isComposite": false,
                     "isPartOfComposite": true
+=======
+                    "id": "e14055be-06cb-4b20-9974-49b10a81e2f1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MeleeAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+>>>>>>> 91987dcf6d7ec07c02d08cfbce386397649e5844
                 }
             ]
         }
