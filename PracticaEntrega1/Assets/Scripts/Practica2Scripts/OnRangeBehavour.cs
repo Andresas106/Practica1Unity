@@ -26,9 +26,10 @@ public class OnRangeBehavour : StateMachineBehaviour
         //Check Triggers
 
         bool isPlayerClose = CheckPlayer(animator.transform);
+        bool isPlayerFar = CheckPlayerFar(animator.transform);
         //Hay que poner que es falso el isTimeUp
         animator.SetBool("IsOnRange", isPlayerClose);
-        animator.SetBool("IsChasing", !isPlayerClose);
+        
 
         //Do Stuff
         Move(animator.transform);
@@ -42,7 +43,12 @@ public class OnRangeBehavour : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 2;
+        return distance < 4;
+    }
+    private bool CheckPlayerFar(Transform mySelf)
+    {
+        float distance = Vector3.Distance(_player.position, mySelf.position);
+        return distance < 8;
     }
 
 }

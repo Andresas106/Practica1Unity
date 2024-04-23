@@ -28,11 +28,11 @@ public class PreAttackBehavour : StateMachineBehaviour
         bool isPlayerClose = CheckPlayer(animator.transform);
 
         //Hay que poner que es falso el isTimeUp
-        animator.SetBool("IsAttacking", !isTimeUp);
+        animator.SetBool("IsAttacking", isTimeUp);
         animator.SetBool("IsOnRange", isPlayerClose);
 
         //Do Stuff
-        Move(animator.transform);
+       // Move(animator.transform);
     }
 
     private void Move(Transform mySelf)
@@ -43,7 +43,7 @@ public class PreAttackBehavour : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 4;
+        return distance < 8;
     }
 
     private bool CheckTime()

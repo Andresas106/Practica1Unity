@@ -40,7 +40,7 @@ public class ChaseBehavour : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 4;
+        return distance < 8;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
