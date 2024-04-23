@@ -30,7 +30,7 @@ public class PostAttackBehavour : StateMachineBehaviour
 
 
         //Do Stuff
-        Move(animator.transform);
+        //Move(animator.transform);
     }
 
     private void Move(Transform mySelf)
