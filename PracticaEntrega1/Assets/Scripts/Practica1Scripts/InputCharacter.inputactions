@@ -51,24 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-<<<<<<< HEAD
                     "name": "Attack",
                     "type": "Button",
-                    "id": "18b63c43-0f24-4c16-96e0-3e6a7ba03ed8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "StrongAttack",
-                    "type": "Button",
-                    "id": "b8de9f7b-7f2e-4a5b-bff7-3dd8d3f3ec3f",
-=======
-                    "name": "MeleeAttack",
-                    "type": "Button",
-                    "id": "0d58c59f-452b-4f75-b954-c01c0cb37fb2",
->>>>>>> 91987dcf6d7ec07c02d08cfbce386397649e5844
+                    "id": "08323ade-cb58-4b96-b2b5-6bcb26d51f4e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -232,58 +217,14 @@
                 },
                 {
                     "name": "",
-<<<<<<< HEAD
-                    "id": "3db2af83-ccfd-4521-9a61-bfae20b9fd63",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "One Modifier",
-                    "id": "d4a1b148-bf33-4317-b447-57e9ffd0da88",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StrongAttack",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "9f60bd43-c25a-4485-b9cc-a955dce559ac",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StrongAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "086006fa-2edd-4b9a-bf4c-feba54c7d174",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StrongAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-=======
-                    "id": "e14055be-06cb-4b20-9974-49b10a81e2f1",
-                    "path": "<Mouse>/leftButton",
+                    "id": "50e07db4-9246-4116-85fb-dd47227748b8",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "MeleeAttack",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
->>>>>>> 91987dcf6d7ec07c02d08cfbce386397649e5844
                 }
             ]
         }

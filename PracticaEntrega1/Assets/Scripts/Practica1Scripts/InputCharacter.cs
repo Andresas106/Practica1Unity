@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @InputCharacters: IInputActionCollection2, IDisposable
+public partial class @InputCharacter: IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @InputCharacters()
+    public @InputCharacter()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""InputCharacter"",
@@ -73,9 +73,9 @@ public partial class @InputCharacters: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MeleeAttack"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""0d58c59f-452b-4f75-b954-c01c0cb37fb2"",
+                    ""id"": ""08323ade-cb58-4b96-b2b5-6bcb26d51f4e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -239,12 +239,12 @@ public partial class @InputCharacters: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e14055be-06cb-4b20-9974-49b10a81e2f1"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""50e07db4-9246-4116-85fb-dd47227748b8"",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""MeleeAttack"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -283,7 +283,7 @@ public partial class @InputCharacters: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_ChangeCamera = m_Player.FindAction("ChangeCamera", throwIfNotFound: true);
         m_Player_Dance = m_Player.FindAction("Dance", throwIfNotFound: true);
-        m_Player_MeleeAttack = m_Player.FindAction("MeleeAttack", throwIfNotFound: true);
+        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,17 +350,17 @@ public partial class @InputCharacters: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_ChangeCamera;
     private readonly InputAction m_Player_Dance;
-    private readonly InputAction m_Player_MeleeAttack;
+    private readonly InputAction m_Player_Attack;
     public struct PlayerActions
     {
-        private @InputCharacters m_Wrapper;
-        public PlayerActions(@InputCharacters wrapper) { m_Wrapper = wrapper; }
+        private @InputCharacter m_Wrapper;
+        public PlayerActions(@InputCharacter wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @ChangeCamera => m_Wrapper.m_Player_ChangeCamera;
         public InputAction @Dance => m_Wrapper.m_Player_Dance;
-        public InputAction @MeleeAttack => m_Wrapper.m_Player_MeleeAttack;
+        public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -385,9 +385,9 @@ public partial class @InputCharacters: IInputActionCollection2, IDisposable
             @Dance.started += instance.OnDance;
             @Dance.performed += instance.OnDance;
             @Dance.canceled += instance.OnDance;
-            @MeleeAttack.started += instance.OnMeleeAttack;
-            @MeleeAttack.performed += instance.OnMeleeAttack;
-            @MeleeAttack.canceled += instance.OnMeleeAttack;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -407,9 +407,9 @@ public partial class @InputCharacters: IInputActionCollection2, IDisposable
             @Dance.started -= instance.OnDance;
             @Dance.performed -= instance.OnDance;
             @Dance.canceled -= instance.OnDance;
-            @MeleeAttack.started -= instance.OnMeleeAttack;
-            @MeleeAttack.performed -= instance.OnMeleeAttack;
-            @MeleeAttack.canceled -= instance.OnMeleeAttack;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -452,6 +452,6 @@ public partial class @InputCharacters: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnChangeCamera(InputAction.CallbackContext context);
         void OnDance(InputAction.CallbackContext context);
-        void OnMeleeAttack(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

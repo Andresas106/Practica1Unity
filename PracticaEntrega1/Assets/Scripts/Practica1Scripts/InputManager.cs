@@ -6,17 +6,18 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
 
-    InputCharacters input;
+    InputCharacter input;
 
     public Vector2 CurrentMovementInput { get; private set; }
     public bool IsRunPressed { get; private set; }
     public bool IsJumpPressed { get; private set; }
     public bool IsChangeCameraPressed { get; private set; }
     public bool IsDancePressed { get; private set; }
+    public bool IsAttackPressed { get; private set; }
     // Start is called before the first frame update
     void Awake()
     {
-        input = new InputCharacters();
+        input = new InputCharacter();
 
         //Esto se ejecuta cuando el personaje pulsa AWSD o el left stick del gamepad
         input.Player.Move.started += onMovementInput;
@@ -35,6 +36,14 @@ public class InputManager : MonoBehaviour
         input.Player.Dance.started += onDanceInput;
         input.Player.Dance.canceled += onDanceInput;
 
+        input.Player.Attack.started += onAttackInput;
+        input.Player.Attack.canceled += onAttackInput;
+
+    }
+
+    private void onAttackInput(InputAction.CallbackContext context)
+    {
+        IsAttackPressed = context.ReadValueAsButton();
     }
 
     private void onDanceInput(InputAction.CallbackContext context)
