@@ -40,7 +40,7 @@ public class IsPatrolling : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 8;
+        return distance < 6;
     }
 
     private bool CheckTime()

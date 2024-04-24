@@ -16,9 +16,6 @@ public class OnRangeBehavour : StateMachineBehaviour
         //Tiempo en 0
         _timer = 0;
 
-        Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
-
-        animator.transform.LookAt(rdmPointInPlane);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -29,7 +26,8 @@ public class OnRangeBehavour : StateMachineBehaviour
         bool isPlayerFar = CheckPlayerFar(animator.transform);
         //Hay que poner que es falso el isTimeUp
         animator.SetBool("IsOnRange", isPlayerClose);
-        
+        animator.SetBool("IsChasing", isPlayerFar);
+
 
         //Do Stuff
         Move(animator.transform);
@@ -37,18 +35,19 @@ public class OnRangeBehavour : StateMachineBehaviour
 
     private void Move(Transform mySelf)
     {
+        mySelf.LookAt(_player);
         mySelf.Translate(mySelf.forward * Speed * Time.deltaTime);
     }
 
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 4;
+        return distance < 3;
     }
     private bool CheckPlayerFar(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 8;
+        return distance < 6;
     }
 
 }

@@ -13,10 +13,7 @@ public class PostAttackBehavour : StateMachineBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
         _timer = 0;
-
-        Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
-
-        animator.transform.LookAt(rdmPointInPlane);
+        
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -30,18 +27,18 @@ public class PostAttackBehavour : StateMachineBehaviour
 
 
         //Do Stuff
-        //Move(animator.transform);
+        Move(animator.transform);
     }
 
     private void Move(Transform mySelf)
     {
-        mySelf.Translate(mySelf.forward * Speed * Time.deltaTime);
+        mySelf.LookAt(_player);
     }
 
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 2;
+        return distance < 3;
     }
 
     private bool CheckTime()

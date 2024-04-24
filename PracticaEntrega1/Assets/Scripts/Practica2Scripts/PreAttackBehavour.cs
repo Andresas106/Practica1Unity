@@ -15,10 +15,6 @@ public class PreAttackBehavour : StateMachineBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
         _timer = 0;
-
-        Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
-
-        animator.transform.LookAt(rdmPointInPlane);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,12 +28,12 @@ public class PreAttackBehavour : StateMachineBehaviour
         animator.SetBool("IsOnRange", isPlayerClose);
 
         //Do Stuff
-       // Move(animator.transform);
+       Move(animator.transform);
     }
 
     private void Move(Transform mySelf)
     {
-        mySelf.Translate(mySelf.forward * Speed * Time.deltaTime);
+        mySelf.LookAt(_player);
     }
 
     private bool CheckPlayer(Transform mySelf)

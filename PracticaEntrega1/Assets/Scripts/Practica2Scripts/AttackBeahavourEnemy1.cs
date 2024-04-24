@@ -25,21 +25,21 @@ public class AttackBehavourEnemy1 : StateMachineBehaviour
     {
         //Check Triggers
         bool isPlayerClose = CheckPlayer(animator.transform);
-        animator.SetBool("IsAttacking", isPlayerClose);
+        animator.SetBool("IsOnRange", isPlayerClose);
 
         //Do Stuff
-        // Move(animator.transform);
+        Move(animator.transform);
     }
 
     private void Move(Transform mySelf)
     {
-        mySelf.Translate(mySelf.forward * Speed * Time.deltaTime);
+        mySelf.LookAt(_player);
     }
 
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 4;
+        return distance < 3;
     }
 
     

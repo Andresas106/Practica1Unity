@@ -11,7 +11,9 @@ public class IdleBehavour : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // la variable player busca al jugador
         _player = GameObject.FindGameObjectWithTag("player").transform;
+        //Se inicializa la variable _timer al inicializarse 
         _timer = 0;
     }
 
@@ -28,7 +30,7 @@ public class IdleBehavour : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 8;
+        return distance < 6;
     }
 
     private bool CheckTime()
@@ -36,11 +38,5 @@ public class IdleBehavour : StateMachineBehaviour
         //Incrementar el timer amb el temps que ha pasat desde l'ultim update
         _timer += Time.deltaTime;
         return _timer > 2;
-    }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
     }
 }
