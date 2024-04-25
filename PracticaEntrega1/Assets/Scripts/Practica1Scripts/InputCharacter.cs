@@ -240,7 +240,7 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""50e07db4-9246-4116-85fb-dd47227748b8"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
