@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class IsPatrolling : StateMachineBehaviour
+public class PatrolBehavour : StateMachineBehaviour
 {
     Transform _player;
     float _timer;
     private float Speed = 2;
-
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -19,7 +17,6 @@ public class IsPatrolling : StateMachineBehaviour
         Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
 
         animator.transform.LookAt(rdmPointInPlane);
-
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,7 +29,7 @@ public class IsPatrolling : StateMachineBehaviour
         animator.SetBool("IsChasing", isPlayerClose);
 
         //Do Stuff
-        //Move(animator.transform);
+        Move(animator.transform);
     }
 
     private void Move(Transform mySelf)
