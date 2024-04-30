@@ -4,49 +4,48 @@ using UnityEngine;
 
 public class SpawnerPatro : MonoBehaviour
 {
-    public GameObject cubPrefab; // Prefab del cubo
-    public int radiCercle = 5; // Radio del círculo
-    public int numCubs = 20; // Número de cubos
-    public float offsetCercle = 0.5f; // Espacio entre los cubos en el círculo
-    public float offsetAltura = 1f; // Espacio entre los cubos apilados
-    public float velocidadRotacion = 20f; // Velocidad de rotación de los cubos
+    public GameObject islandPrefab; // Prefab de la isla
+    public int circleRadius = 5; // Radio del círculo
+    public int numIslands = 20; // Número de islas
+    public float circleOffset = 0.5f; // Espacio entre las islas en el círculo
+    public float heightOffset = 1f; // Espacio entre las islas apiladas
+    public float rotationSpeed = 20f; // Velocidad de rotación de las islas
 
     void Start()
     {
-        ConstruirEstructuraCircular();
+        BuildCircularStructure();
     }
 
-    void ConstruirEstructuraCircular()
+    void BuildCircularStructure()
     {
-        for (int i = 0; i < numCubs; i++)
+        for (int i = 0; i < numIslands; i++)
         {
-            // Calcular el ángulo para cada cubo alrededor del círculo
-            float angle = i * Mathf.PI * 2f / numCubs;
+            // Calcular el ángulo para cada isla alrededor del círculo
+            float angle = i * Mathf.PI * 2f / numIslands;
 
-            // Calcular las coordenadas X y Z del cubo a partir del ángulo y el radio del círculo
-            float x = Mathf.Cos(angle) * radiCercle;
-            float z = Mathf.Sin(angle) * radiCercle;
+            // Calcular las coordenadas X y Z de la isla a partir del ángulo y el radio del círculo
+            float x = Mathf.Cos(angle) * circleRadius;
+            float z = Mathf.Sin(angle) * circleRadius;
 
-            // Crear la posición de spawn del cubo a partir de las coordenadas y la altura
-            Vector3 posicioSpawn = new Vector3(x, i * offsetAltura, z);
+            // Crear la posición de spawn de la isla a partir de las coordenadas y la altura
+            Vector3 spawnPosition = new Vector3(x, i * heightOffset, z);
 
-            // Calcular la rotación del cubo para mirar hacia el centro del círculo
-            Quaternion rotacio = Quaternion.LookRotation(transform.position - posicioSpawn);
+            // Calcular la rotación de la isla para mirar hacia el centro del círculo
+            Quaternion rotation = Quaternion.LookRotation(transform.position - spawnPosition);
 
-            // Generar un cubo en la posición y rotación calculadas
-            GameObject cub = Instantiate(cubPrefab, posicioSpawn, rotacio, transform);
-            cub.transform.localScale = Vector3.one; // Tamaño base de 1 en todas las dimensiones
+            // Generar una isla en la posición y rotación calculadas
+            GameObject island = Instantiate(islandPrefab, spawnPosition, rotation, transform);
+            island.transform.localScale = Vector3.one; // Tamaño base de 1 en todas las dimensiones
 
-            cub.GetComponent<Renderer>().material.color = Random.ColorHSV(); // Color aleatorio
 
-            // Añadir rotación continua al cubo alrededor del centro de la estructura
-            cub.transform.RotateAround(transform.position, Vector3.up, i * (360f / numCubs));
+            // Añadir rotación continua a la isla alrededor del centro de la estructura
+            island.transform.RotateAround(transform.position, Vector3.up, i * (360f / numIslands));
         }
     }
 
     void Update()
     {
-        // Rotar todos los cubos alrededor del centro de la estructura
-        transform.Rotate(Vector3.up, velocidadRotacion * Time.deltaTime);
+        // Rotar todas las islas alrededor del centro de la estructura
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 }
