@@ -82,15 +82,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Switch"",
-                    ""type"": ""Button"",
-                    ""id"": ""f9815053-b4db-4e01-9483-a92c67343e21"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Arma1"",
                     ""type"": ""Button"",
                     ""id"": ""09b5b71b-e332-494a-b4df-6474b7080f73"",
@@ -277,22 +268,11 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""016b581d-19b5-4c71-a7cd-4c83e3191e16"",
-                    ""path"": ""<Keyboard>/scrollLock"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Switch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""64c430e8-20cf-4ea4-9651-91f7a531bf58"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Arma1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -303,7 +283,7 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Arma2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -344,7 +324,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
         m_Player_ChangeCamera = m_Player.FindAction("ChangeCamera", throwIfNotFound: true);
         m_Player_Dance = m_Player.FindAction("Dance", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Player_Switch = m_Player.FindAction("Switch", throwIfNotFound: true);
         m_Player_Arma1 = m_Player.FindAction("Arma1", throwIfNotFound: true);
         m_Player_Arma2 = m_Player.FindAction("Arma2", throwIfNotFound: true);
     }
@@ -414,7 +393,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ChangeCamera;
     private readonly InputAction m_Player_Dance;
     private readonly InputAction m_Player_Attack;
-    private readonly InputAction m_Player_Switch;
     private readonly InputAction m_Player_Arma1;
     private readonly InputAction m_Player_Arma2;
     public struct PlayerActions
@@ -427,7 +405,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
         public InputAction @ChangeCamera => m_Wrapper.m_Player_ChangeCamera;
         public InputAction @Dance => m_Wrapper.m_Player_Dance;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
-        public InputAction @Switch => m_Wrapper.m_Player_Switch;
         public InputAction @Arma1 => m_Wrapper.m_Player_Arma1;
         public InputAction @Arma2 => m_Wrapper.m_Player_Arma2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -457,9 +434,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @Switch.started += instance.OnSwitch;
-            @Switch.performed += instance.OnSwitch;
-            @Switch.canceled += instance.OnSwitch;
             @Arma1.started += instance.OnArma1;
             @Arma1.performed += instance.OnArma1;
             @Arma1.canceled += instance.OnArma1;
@@ -488,9 +462,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @Switch.started -= instance.OnSwitch;
-            @Switch.performed -= instance.OnSwitch;
-            @Switch.canceled -= instance.OnSwitch;
             @Arma1.started -= instance.OnArma1;
             @Arma1.performed -= instance.OnArma1;
             @Arma1.canceled -= instance.OnArma1;
@@ -540,7 +511,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
         void OnChangeCamera(InputAction.CallbackContext context);
         void OnDance(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnSwitch(InputAction.CallbackContext context);
         void OnArma1(InputAction.CallbackContext context);
         void OnArma2(InputAction.CallbackContext context);
     }

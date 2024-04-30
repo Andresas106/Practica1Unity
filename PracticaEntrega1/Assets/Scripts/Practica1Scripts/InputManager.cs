@@ -14,6 +14,8 @@ public class InputManager : MonoBehaviour
     public bool IsChangeCameraPressed { get; private set; }
     public bool IsDancePressed { get; private set; }
     public bool IsAttackPressed { get; private set; }
+    public bool IsArma1Pressed { get; private set; }
+    public bool IsArma2Pressed { get; private set; }
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,6 +41,28 @@ public class InputManager : MonoBehaviour
         input.Player.Attack.started += onAttackInput;
         input.Player.Attack.canceled += onAttackInput;
 
+        input.Player.Arma1.started += onArma1Input;
+        input.Player.Arma1.canceled += onArma1Input;
+
+        input.Player.Arma2.started += onArma2Input;
+        input.Player.Arma2.canceled += onArma2Input;
+
+
+    }
+
+    void FixedUpdate()
+    {
+        IsAttackPressed = false;
+    }
+
+    private void onArma2Input(InputAction.CallbackContext context)
+    {
+        IsArma2Pressed = context.ReadValueAsButton();
+    }
+
+    private void onArma1Input(InputAction.CallbackContext context)
+    {
+        IsArma1Pressed = context.ReadValueAsButton();
     }
 
     private void onAttackInput(InputAction.CallbackContext context)

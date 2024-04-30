@@ -14,6 +14,8 @@ public class AttackController: MonoBehaviour
     private bool isJumpPressed;
     private bool isDancePressed;
     private Animator animator;
+
+    public GameObject gun;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +29,27 @@ public class AttackController: MonoBehaviour
         GetInputsCtrl();
 
 
-        if (isAttackPressed)
+        if(!gun.activeInHierarchy)
         {
-            animator.SetBool("isAttacking", true);
+            if (isAttackPressed)
+            {
+                animator.SetBool("isAttacking", true);
+                StartCoroutine(wait());
+
+            }
+            else if (isWalkingPressed || isRunPressed || isJumpPressed || isDancePressed)
+            {
+                animator.SetBool("isAttacking", false);
+            }
         }
-        else if (isWalkingPressed || isRunPressed || isJumpPressed || isDancePressed)
-        {
-            animator.SetBool("isAttacking", false);
-        }
+        
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1);
+
+        animator.SetBool("isAttacking", false);
     }
 
     private void GetInputsCtrl()
@@ -54,4 +69,6 @@ public class AttackController: MonoBehaviour
             isWalkingPressed = false;
         }
     }
+
+
 }

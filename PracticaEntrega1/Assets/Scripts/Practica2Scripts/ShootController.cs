@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
-    public GameObject arrowPrefab; // Prefab de la flecha
-    public Transform arrowSpawnPoint; // Punto de origen de la flecha
-    public float arrowSpeed = 30f; // Velocidad de la flecha
-    public float raycastDistance = 100f; // Rango de alcance del Raycast
+    public LineRenderer laserLine; // Referencia al LineRenderer para el láser
+    public float laserWidth = 0.1f; // Ancho del láser
+    public float laserMaxLength = 100f; // Longitud máxima del láser
+    public float laserDuration = 0.1f; // Duración del láser visual
+
+    private InputManager inputManager;
+    private bool AttackPressed;
+
+    void Start()
+    {
+        inputManager = GetComponent<InputManager>();
+        laserLine.startWidth = laserWidth;
+        laserLine.endWidth = laserWidth;
+    }
 
     void Update()
     {
-        if (Input.GetButtonDown("tecla")) // Si es presiona la tecla de disparo
+        AttackPressed = inputManager.IsAttackPressed;
+
+        if (AttackPressed) // Si es presiona la tecla de disparo
         {
             Disparar(); // Llama al método de disparo
         }
@@ -22,32 +34,39 @@ public class ShootController : MonoBehaviour
         RaycastHit hit; // Almacena información sobre la colisión del Raycast
 
         // Lanza un Raycast desde la posición del jugador en la dirección hacia adelante
-        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
+        if (Physics.Raycast(transform.position, -transform.forward, out hit, laserMaxLength))
         {
             // Comprueba si el Raycast ha impactado en un enemigo
             if (hit.collider.CompareTag("Enemigo"))
             {
-                // Instancia la flecha en el punto de origen y la dirección del jugador
-                GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, transform.rotation);
+                // Muestra el láser en la dirección del raycast
+                StartCoroutine(ShowLaser(transform.position, hit.point));
 
-                // Obtiene el componente Rigidbody de la flecha
-                Rigidbody rb = arrow.GetComponent<Rigidbody>();
-
-                // Si el componente Rigidbody existe
-                if (rb != null)
-                {
-                    // Aplica fuerza a la flecha en la dirección hacia adelante del jugador
-                    rb.velocity = transform.forward * arrowSpeed;
-                }
+                // Realiza acciones adicionales cuando se golpea un enemigo
+                // Puedes agregar aquí lógica para causar daño al enemigo, por ejemplo
+                Debug.Log("Ha hiteado al enemigo");
             }
             else
             {
-                Debug.Log("No hay enemigo en la línea de tiro.");
+                // Muestra el láser en la dirección del raycast sin golpear un enemigo
+                StartCoroutine(ShowLaser(transform.position, hit.point));
             }
         }
         else
         {
-            Debug.Log("No hay objeto detectado en la línea de tiro.");
+            // Si el raycast no golpea nada, muestra el láser hasta la distancia máxima
+            Vector3 endPosition = transform.position - transform.forward * laserMaxLength;
+            StartCoroutine(ShowLaser(transform.position, endPosition));
         }
+    }
+
+    // Método para mostrar visualmente el láser
+    IEnumerator ShowLaser(Vector3 startPosition, Vector3 endPosition)
+    {
+        laserLine.enabled = true;
+        laserLine.SetPosition(0, startPosition);
+        laserLine.SetPosition(1, endPosition);
+        yield return new WaitForSeconds(laserDuration);
+        laserLine.enabled = false;
     }
 }

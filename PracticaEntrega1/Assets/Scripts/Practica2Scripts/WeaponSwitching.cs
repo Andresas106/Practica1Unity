@@ -5,43 +5,29 @@ using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    public int selectedWeapon = 0;
+    public int selectedWeapon = 0, previousSelectedWeapon = 0;
+    private InputManager inputManager;
+    private bool Arma1Pressed;
+    private bool Arma2Pressed;
 
     void Start()
     {
+        inputManager = GetComponent<InputManager>();
         SelectWeapon();
     }
 
-    void Uptade()
+    void Update()
     {
-
-        int previousSelectedWeapon=selectedWeapon;
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        Arma1Pressed = inputManager.IsArma1Pressed;
+        Arma2Pressed = inputManager.IsArma2Pressed;
+        if (Arma1Pressed)
         {
-            if (selectedWeapon >= transform.childCount -1)
-                selectedWeapon = 0;
-            else
-                selectedWeapon++;
-        }
-        if (Input.GetAxis("Mouse ScrollWheel")<0f)
-        {
-            if (selectedWeapon <= 0)
-                selectedWeapon = transform.childCount - 1;
-            else
-                selectedWeapon--;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
+            
             selectedWeapon=0;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount>=2)
+        if (Arma2Pressed)
         {
             selectedWeapon = 1;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3)
-        {
-            selectedWeapon = 2;
         }
 
         if (previousSelectedWeapon != selectedWeapon)
@@ -62,7 +48,7 @@ public class WeaponSwitching : MonoBehaviour
             }else
                 weapon.gameObject.SetActive(false);
             i++;
-
         }
+        previousSelectedWeapon = selectedWeapon;
     }
 }

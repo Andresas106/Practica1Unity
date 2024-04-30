@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Switch",
-                    "type": "Button",
-                    "id": "f9815053-b4db-4e01-9483-a92c67343e21",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Arma1",
                     "type": "Button",
                     "id": "09b5b71b-e332-494a-b4df-6474b7080f73",
@@ -255,22 +246,11 @@
                 },
                 {
                     "name": "",
-                    "id": "016b581d-19b5-4c71-a7cd-4c83e3191e16",
-                    "path": "<Keyboard>/scrollLock",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Switch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "64c430e8-20cf-4ea4-9651-91f7a531bf58",
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Arma1",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -281,7 +261,7 @@
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Arma2",
                     "isComposite": false,
                     "isPartOfComposite": false
