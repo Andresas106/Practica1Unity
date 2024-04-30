@@ -16,7 +16,7 @@ public class UpperBodyAnimation : MonoBehaviour
     void Update()
     {
         float w = Mathf.Sin(Time.time) / 2 + 0.5f;
-        _animator.SetLayerWeight(1, w);
+        //_animator.SetLayerWeight(1, w);
 
     }
 }

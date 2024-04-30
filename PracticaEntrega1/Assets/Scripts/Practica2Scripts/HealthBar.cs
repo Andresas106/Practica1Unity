@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour, ITakeDamage
 {
-
+    public GameObject player;
     public Slider healthSlider;
     public Slider easeHealthSlider;
     public float maxHealth = 100f;
@@ -22,14 +23,27 @@ public class HealthBar : MonoBehaviour
     {
         if (healthSlider.value != health) healthSlider.value = health;
 
-        if(healthSlider.value != easeHealthSlider.value)
+
+        if (healthSlider.value != easeHealthSlider.value)
         {
             easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value,  health, lerpSpeed);
         }
+
+        
     }
 
-    private void takeDamage(float damage)
+    public void TakeDamage(float amount, bool isEnemy)
     {
-        health -= damage;
+        health -= amount;
+        if (health <= 0 && !isEnemy)
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+        }
+        else if(health <= 0)
+        {
+            Destroy(player);
+        }
+        
     }
 }
