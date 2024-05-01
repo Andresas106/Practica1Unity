@@ -8,12 +8,14 @@ public class OnAttackBehavour : StateMachineBehaviour
     Transform _player;
     float _timer;
     private float Speed = 2;
+   
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
         _timer = 0;
-        
+      
     }
    
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

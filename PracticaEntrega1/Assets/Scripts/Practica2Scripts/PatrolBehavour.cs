@@ -29,7 +29,7 @@ public class PatrolBehavour : StateMachineBehaviour
         animator.SetBool("IsChasing", isPlayerClose);
 
         //Do Stuff
-        Move(animator.transform);
+        //Move(animator.transform);
     }
 
     private void Move(Transform mySelf)

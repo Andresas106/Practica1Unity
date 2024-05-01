@@ -10,12 +10,13 @@ public class AttackBehavourEnemy1 : StateMachineBehaviour
     Transform _player;
     float _timer;
     private float Speed = 2;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
         _timer = 0;
-
+      
         Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
 
         animator.transform.LookAt(rdmPointInPlane);

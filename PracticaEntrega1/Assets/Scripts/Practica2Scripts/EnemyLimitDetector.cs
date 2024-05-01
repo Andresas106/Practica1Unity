@@ -4,38 +4,68 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class NewBehaviourScript : MonoBehaviour
+public class EnemyLimitDetector : MonoBehaviour
 {
     public Transform CheckPoint;
     private float Speed = 2;
     public LayerMask WhatIsGround;
+    public Transform Teletransport;
+    private float timeSinceLastGround = 0f;
+   
+
+    // Referencia al componente Animator
+    private Animator animator;
+
+    void Start()
+    {
+        // Obtener el componente Animator
+        animator = GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (NoGround())
-            Turn();
-
-        //Move();
+        if (animator.GetBool("IsPatrolling"))
+        {
+            if (NoGround())
+            {
+                timeSinceLastGround += Time.deltaTime;
+                if (timeSinceLastGround >= 0.1f)
+                {
+                    // Teletransportar al punto específico
+                    transform.position = Teletransport.position;
+                    timeSinceLastGround = 0f; // Reiniciar el temporizador después de teletransportarse
+                }
+                else
+                {
+                    // Girar solo si no ha pasado suficiente tiempo para teletransportarse
+                    Turn(); 
+                }
+            }
+            else
+            {
+                // Moverse solo si hay suelo debajo
+                Move(); 
+            }
+        }
     }
 
     private bool NoGround()
     {
-        if (Physics.Raycast(CheckPoint.position, Vector3.down, 0.55f, WhatIsGround))
-        {
-            return false;
-        }
-        return true;
+        // Revisar si hay suelo debajo
+        return !Physics.Raycast(CheckPoint.position, Vector3.down, 0.55f, WhatIsGround);
     }
 
     private void Turn()
     {
-        //Random la opcion de unity
+        // Girar aleatoriamente
         float angle = Random.Range(90f, 270f);
         transform.Rotate(new Vector3(0, angle, 0));
     }
 
     private void Move()
     {
+        // Mover hacia adelante
         transform.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
 }
