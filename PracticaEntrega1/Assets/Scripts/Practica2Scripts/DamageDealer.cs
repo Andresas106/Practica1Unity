@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
-    public float damage = 10;
+    public float Enemydamage = 10, Playerdamage = 20;
     public GameObject player;
 
     private void OnTriggerEnter(Collider other)
@@ -18,14 +18,14 @@ public class DamageDealer : MonoBehaviour
             {
                 if (other.tag == "Enemigo")
                 {
-                    go.TakeDamage(damage, true);
+                    go.TakeDamage(Playerdamage, true);
                 }
             }
             else if (player.CompareTag("Enemigo"))
             {
                 if (other.tag == "player")
                 {
-                    go.TakeDamage(damage, false);
+                    go.TakeDamage(Enemydamage, false);
                 }
             }
         }
