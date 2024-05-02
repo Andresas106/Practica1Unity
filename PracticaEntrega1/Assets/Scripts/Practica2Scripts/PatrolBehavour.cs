@@ -6,9 +6,10 @@ using UnityEngine;
 public class PatrolBehavour : StateMachineBehaviour
 {
     Transform _player;
+    HealthBar _healthBar; // Referencia al script HealthBar
     float _timer;
     private float Speed = 2;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
@@ -17,24 +18,20 @@ public class PatrolBehavour : StateMachineBehaviour
         Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
 
         animator.transform.LookAt(rdmPointInPlane);
+
+        // Obtiene la referencia al script HealthBar del objeto del animator
+        _healthBar = animator.GetComponent<HealthBar>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Check Triggers
         bool isTimeUp = CheckTime();
         bool isPlayerClose = CheckPlayer(animator.transform);
-        //Hay que poner que es falso el isTimeUp
+        bool isPlayerInjured = CheckHealth();
+
         animator.SetBool("IsPatrolling", !isTimeUp);
         animator.SetBool("IsChasing", isPlayerClose);
-
-        //Do Stuff
-        //Move(animator.transform);
-    }
-
-    private void Move(Transform mySelf)
-    {
-        mySelf.Translate(mySelf.forward * Speed * Time.deltaTime);
+        animator.SetBool("IsChasingInjured", isPlayerInjured);
     }
 
     private bool CheckPlayer(Transform mySelf)
@@ -45,10 +42,17 @@ public class PatrolBehavour : StateMachineBehaviour
 
     private bool CheckTime()
     {
-        //Incrementar el timer amb el temps que ha pasat desde l'ultim update
         _timer += Time.deltaTime;
         return _timer > 4;
     }
 
-
+    private bool CheckHealth()
+    {
+        // Compara la salud actual con la salud máxima
+        if (_healthBar != null)
+        {
+            return _healthBar.health <= _healthBar.maxHealth * 0.5f;
+        }
+        return false;
+    }
 }
