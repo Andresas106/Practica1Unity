@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HealthBar : MonoBehaviour, ITakeDamage
+public class HealthBar : MonoBehaviour, ITakeDamage, IHealDamage
 {
     public GameObject player;
     public Slider healthSlider;
@@ -45,5 +45,10 @@ public class HealthBar : MonoBehaviour, ITakeDamage
             Destroy(player);
         }
         
+    }
+
+    public void HealDamage(float amount)
+    {
+        if(health != maxHealth) health += amount;
     }
 }

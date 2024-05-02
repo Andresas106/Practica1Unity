@@ -31,7 +31,18 @@ public class EnemyController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[targetPoint].position, speed * Time.deltaTime);
 
             // Orienta al enemigo hacia el punto de patrulla actual
-            transform.LookAt(patrolPoints[targetPoint].position);
+            // Obtén la dirección hacia el waypoint
+            Vector3 directionToWaypoint = (patrolPoints[targetPoint].position - transform.position).normalized;
+
+            // Calcula la rotación para que el enemigo mire hacia el waypoint
+            Quaternion targetRotation = Quaternion.LookRotation(directionToWaypoint);
+
+            // Modifica la rotación para evitar la inclinación vertical
+            targetRotation.x = 0;
+            targetRotation.z = 0;
+
+            // Aplica la rotación al enemigo
+            transform.rotation = targetRotation;
         }
     }
 

@@ -44,8 +44,7 @@ public class EnemyLimitDetector : MonoBehaviour
             }
             else
             {
-                // Moverse solo si hay suelo debajo
-                Move(); 
+                Move();
             }
         }
     }
@@ -66,6 +65,6 @@ public class EnemyLimitDetector : MonoBehaviour
     private void Move()
     {
         // Mover hacia adelante
-        transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        if(!animator.GetBool("IsAttacking") && !animator.GetBool("IsOnRange")) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
 }
