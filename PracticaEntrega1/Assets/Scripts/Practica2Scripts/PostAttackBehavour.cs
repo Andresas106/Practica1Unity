@@ -24,11 +24,11 @@ public class PostAttackBehavour : StateMachineBehaviour
         //Check Triggers
         bool isTimeUp = CheckTime();
         bool isPlayerClose = CheckPlayer(animator.transform);
-        bool isPlayerInjured = CheckHealth();
+        bool isPlayerInjured = CheckHealth(animator.transform);
         //Hay que poner que es falso el isTimeUp
-        animator.SetBool("IsOnRange", !isPlayerClose && !isPlayerInjured);
+        animator.SetBool("IsOnRange", !isPlayerClose);
         animator.SetBool("IsAttacking", isPlayerClose);
-        animator.SetBool("IsChasingInjured", !isPlayerClose && isPlayerInjured);
+        animator.SetBool("IsChasingInjured", isPlayerInjured);
 
 
         //Do Stuff
@@ -53,12 +53,13 @@ public class PostAttackBehavour : StateMachineBehaviour
         return _timer > 4;
     }
 
-    private bool CheckHealth()
+    private bool CheckHealth(Transform mySelf)
     {
         // Compara la salud actual con la salud máxima
         if (_healthBar != null)
         {
-            return _healthBar.health <= _healthBar.maxHealth * 0.5f;
+            float distance = Vector3.Distance(_player.position, mySelf.position);
+            return _healthBar.health <= _healthBar.maxHealth * 0.5f && distance < 3;
         }
         return false;
     }

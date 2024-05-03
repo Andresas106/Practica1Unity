@@ -218,13 +218,13 @@ AnimatorStateMachine:
     m_Position: {x: 110, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6555604977888272986}
-    m_Position: {x: 830, y: 110, z: 0}
+    m_Position: {x: 840, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 44564760164967158}
-    m_Position: {x: 430, y: 350, z: 0}
+    m_Position: {x: 480, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 351178959153167271}
-    m_Position: {x: 710, y: 470, z: 0}
+    m_Position: {x: 730, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9113232719689813622}
     m_Position: {x: 160, y: 470, z: 0}
@@ -233,7 +233,7 @@ AnimatorStateMachine:
     m_Position: {x: 450, y: 580, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 684999333561243623}
-    m_Position: {x: 850, y: 330, z: 0}
+    m_Position: {x: 880, y: 290, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -313,37 +313,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsChasing
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsOnRange
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsOnRangeInjured
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsChasingInjured
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

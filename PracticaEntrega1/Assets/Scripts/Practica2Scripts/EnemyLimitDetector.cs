@@ -9,6 +9,7 @@ public class EnemyLimitDetector : MonoBehaviour
     public Transform CheckPoint;
     private float Speed = 2;
     public LayerMask WhatIsGround;
+    public LayerMask WhatIsWall;
     public Transform Teletransport;
     private float timeSinceLastGround = 0f;
    
@@ -27,7 +28,7 @@ public class EnemyLimitDetector : MonoBehaviour
     {
         if (animator.GetBool("IsPatrolling"))
         {
-            if (NoGround())
+            if (NoGround() || HitWall())
             {
                 timeSinceLastGround += Time.deltaTime;
                 if (timeSinceLastGround >= 0.1f)
@@ -51,8 +52,14 @@ public class EnemyLimitDetector : MonoBehaviour
 
     private bool NoGround()
     {
-        // Revisar si hay suelo debajo
-        return !Physics.Raycast(CheckPoint.position, Vector3.down, 0.55f, WhatIsGround);
+        // Revisar si hay suelo debajo o si hay algún objeto (como una pared) frente al enemigo
+        return !Physics.Raycast(CheckPoint.position, Vector3.down, 0.55f, WhatIsGround) || Physics.Raycast(transform.position, transform.forward, 1f, WhatIsGround);
+    }
+
+    private bool HitWall()
+    {
+        // Revisar si hay una pared frente al enemigo
+        return Physics.Raycast(transform.position, transform.forward, 1f, WhatIsWall);
     }
 
     private void Turn()

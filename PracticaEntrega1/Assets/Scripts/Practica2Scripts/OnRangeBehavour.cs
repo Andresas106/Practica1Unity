@@ -21,13 +21,11 @@ public class OnRangeBehavour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Check Triggers
-
         bool isPlayerClose = CheckPlayer(animator.transform);
         bool isPlayerFar = CheckPlayerFar(animator.transform);
-        //Hay que poner que es falso el isTimeUp
+        
         animator.SetBool("IsOnRange", isPlayerClose);
         animator.SetBool("IsChasing", isPlayerFar);
-
 
         //Do Stuff
         Move(animator.transform);

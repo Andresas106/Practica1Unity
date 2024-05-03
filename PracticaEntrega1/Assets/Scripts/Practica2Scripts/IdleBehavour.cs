@@ -25,6 +25,8 @@ public class IdleBehavour : StateMachineBehaviour
         bool isPlayerClose = CheckPlayer(animator.transform);
         animator.SetBool("IsPatrolling", isTimeUp);
         animator.SetBool("IsChasing", isPlayerClose);
+      
+        
     }
 
     private bool CheckPlayer(Transform mySelf)

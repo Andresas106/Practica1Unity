@@ -10,11 +10,15 @@ public class PreAttackBehavour : StateMachineBehaviour
     Transform _player;
     float _timer;
     private float Speed = 2;
+    HealthBar _healthBar;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
         _timer = 0;
+        // Obtiene la referencia al script HealthBar del objeto del animator
+        _healthBar = animator.GetComponent<HealthBar>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,13 +26,16 @@ public class PreAttackBehavour : StateMachineBehaviour
         //Check Triggers
         bool isTimeUp = CheckTime();
         bool isPlayerClose = CheckPlayer(animator.transform);
+        bool isPlayerInjured = CheckHealth(animator.transform);
 
         //Hay que poner que es falso el isTimeUp
         animator.SetBool("IsAttacking", isTimeUp);
         animator.SetBool("IsOnRange", isPlayerClose);
+        animator.SetBool("IsOnRangeInjured", isPlayerInjured);
+
 
         //Do Stuff
-       Move(animator.transform);
+        Move(animator.transform);
     }
 
     private void Move(Transform mySelf)
@@ -39,7 +46,7 @@ public class PreAttackBehavour : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 8;
+        return distance < 6;
     }
 
     private bool CheckTime()
@@ -47,6 +54,17 @@ public class PreAttackBehavour : StateMachineBehaviour
         //Incrementar el timer amb el temps que ha pasat desde l'ultim update
         _timer += Time.deltaTime;
         return _timer > 2;
+    }
+
+    private bool CheckHealth(Transform mySelf)
+    {
+        // Compara la salud actual con la salud máxima
+        if (_healthBar != null)
+        {
+            float distance = Vector3.Distance(_player.position, mySelf.position);
+            return _healthBar.health <= _healthBar.maxHealth * 0.5f && distance < 6;
+        }
+        return false;
     }
 
 }

@@ -25,9 +25,10 @@ public class PatrolBehavour : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+       
         bool isTimeUp = CheckTime();
         bool isPlayerClose = CheckPlayer(animator.transform);
-        bool isPlayerInjured = CheckHealth();
+        bool isPlayerInjured = CheckHealth(animator.transform);
 
         animator.SetBool("IsPatrolling", !isTimeUp);
         animator.SetBool("IsChasing", isPlayerClose);
@@ -46,12 +47,13 @@ public class PatrolBehavour : StateMachineBehaviour
         return _timer > 4;
     }
 
-    private bool CheckHealth()
+    private bool CheckHealth(Transform mySelf)
     {
         // Compara la salud actual con la salud máxima
         if (_healthBar != null)
         {
-            return _healthBar.health <= _healthBar.maxHealth * 0.5f;
+            float distance = Vector3.Distance(_player.position, mySelf.position);
+            return _healthBar.health <= _healthBar.maxHealth * 0.5f && distance < 6;
         }
         return false;
     }
