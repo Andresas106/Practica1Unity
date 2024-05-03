@@ -16,10 +16,6 @@ public class GunDamageDealer : MonoBehaviour
                 {
                     go.TakeDamage(Playerdamage, true);
                 }
-                else if (attackerTag == "Enemigo")
-                {
-                    go.TakeDamage(Enemydamage, false);
-                }
             }
         }
 }

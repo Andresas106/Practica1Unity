@@ -1746,6 +1746,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b3cbeffabac5d9d409a09874bb821f4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1427459478}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b3cbeffabac5d9d409a09874bb821f4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2090063977}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3cbeffabac5d9d409a09874bb821f4a, type: 3}
       insertIndex: -1
@@ -2821,7 +2824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemydamage: 10
   Playerdamage: 20
-  player: {fileID: 1143176702}
+  player: {fileID: 173244253}
 --- !u!65 &413502695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4567,7 +4570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemydamage: 10
   Playerdamage: 20
-  player: {fileID: 1143176702}
+  player: {fileID: 2015595337}
 --- !u!1 &663080915
 GameObject:
   m_ObjectHideFlags: 0
@@ -4602,7 +4605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 216, y: -50}
+  m_AnchoredPosition: {x: 216, y: -68}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &665723261 stripped
@@ -9624,9 +9627,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8044669281949152778, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 555451783}
-    - targetCorrespondingSourceObject: {fileID: -8021001004253913084, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 2090063977}
     - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1633835134}
@@ -11345,7 +11345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462595390}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28515697, y: -0.04728012, z: 0.008317309, w: 0.95727795}
+  m_LocalRotation: {x: 0.285157, y: -0.04728008, z: 0.008317305, w: 0.9572779}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11709,11 +11709,6 @@ CapsuleCollider:
   m_Height: 790.2241
   m_Direction: 1
   m_Center: {x: -0.0005645752, y: 395.11212, z: -0.000015258789}
---- !u!4 &1558339115 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8021001004253913084, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
-  m_PrefabInstance: {fileID: 1312669345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1563005079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 57194965486924603, guid: 8cc6c006f1a88834e9a00f3d624c0bf3, type: 3}
@@ -21856,11 +21851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9efa376588839824792105233178308b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.61
+      value: -1.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9efa376588839824792105233178308b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.5
+      value: 15.83
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9efa376588839824792105233178308b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22074,6 +22069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91078eff8a74ce64290e86fc41038d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1143176709}
   CheckPoint: {fileID: 7622582}
   WhatIsGround:
     serializedVersion: 2
@@ -22247,12 +22243,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090063976}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.006899541, y: 0.021585487, z: 0.0017576198, w: 0.9997417}
-  m_LocalPosition: {x: 0.06, y: -0.28, z: 0.37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.01235275, y: -0.99547017, z: -0.065802164, w: 0.06750298}
+  m_LocalPosition: {x: 0.45, y: 0.16, z: -1.36}
+  m_LocalScale: {x: 7.291869, y: 7.2319846, z: 7.233094}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1558339115}
+  m_Father: {fileID: 1092921346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2097826718 stripped
 GameObject:

@@ -28,7 +28,7 @@ public class PostAttackBehavour : StateMachineBehaviour
         //Hay que poner que es falso el isTimeUp
         animator.SetBool("IsOnRange", !isPlayerClose);
         animator.SetBool("IsAttacking", isPlayerClose);
-        animator.SetBool("IsChasingInjured", isPlayerInjured);
+        animator.SetBool("IsOnRangeInjured", isPlayerInjured);
 
 
         //Do Stuff
@@ -43,7 +43,7 @@ public class PostAttackBehavour : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 3;
+        return (_healthBar.health > (_healthBar.maxHealth * 0.5f)) && distance < 3;
     }
 
     private bool CheckTime()

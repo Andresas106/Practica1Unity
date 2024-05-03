@@ -38,7 +38,7 @@ public class PatrolBehavour : StateMachineBehaviour
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
-        return distance < 6;
+        return _healthBar.health > _healthBar.maxHealth * 0.5f && distance < 6;
     }
 
     private bool CheckTime()

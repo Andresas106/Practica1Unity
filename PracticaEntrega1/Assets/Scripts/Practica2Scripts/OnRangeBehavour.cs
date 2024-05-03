@@ -23,7 +23,8 @@ public class OnRangeBehavour : StateMachineBehaviour
         //Check Triggers
         bool isPlayerClose = CheckPlayer(animator.transform);
         bool isPlayerFar = CheckPlayerFar(animator.transform);
-        
+
+        //animator.SetBool("IsPatrolling", false);
         animator.SetBool("IsOnRange", isPlayerClose);
         animator.SetBool("IsChasing", isPlayerFar);
 

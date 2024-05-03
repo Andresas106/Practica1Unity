@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyLimitDetector : MonoBehaviour
 {
+    public Transform player;
     public Transform CheckPoint;
     private float Speed = 2;
     public LayerMask WhatIsGround;
@@ -26,9 +27,21 @@ public class EnemyLimitDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(HitWall())
+        {
+            animator.SetBool("IsWall", true);
+            animator.SetBool("IsChasing", false);
+            animator.SetBool("IsChasingInjured", false);
+        }
+        else
+        {
+            animator.SetBool("IsWall", false);
+        }
+
         if (animator.GetBool("IsPatrolling"))
         {
-            if (NoGround() || HitWall())
+            if (NoGround())
             {
                 timeSinceLastGround += Time.deltaTime;
                 if (timeSinceLastGround >= 0.1f)
@@ -48,18 +61,20 @@ public class EnemyLimitDetector : MonoBehaviour
                 Move();
             }
         }
+
+        
     }
 
     private bool NoGround()
     {
         // Revisar si hay suelo debajo o si hay algún objeto (como una pared) frente al enemigo
-        return !Physics.Raycast(CheckPoint.position, Vector3.down, 0.55f, WhatIsGround) || Physics.Raycast(transform.position, transform.forward, 1f, WhatIsGround);
+        return !Physics.Raycast(CheckPoint.position, Vector3.down, 0.55f, WhatIsGround);
     }
 
     private bool HitWall()
     {
         // Revisar si hay una pared frente al enemigo
-        return Physics.Raycast(transform.position, transform.forward, 1f, WhatIsWall);
+        return Physics.Raycast(transform.position, (player.transform.position - transform.position), 10f,  WhatIsWall);
     }
 
     private void Turn()

@@ -15,6 +15,7 @@ public class ShootController : MonoBehaviour
     private InputManager inputManager;
     private bool AttackPressed;
     private Transform gunTransform; // Referencia al transform de la pistola
+    private bool once = false;
 
     void Start()
     {
@@ -43,10 +44,12 @@ public class ShootController : MonoBehaviour
 
         if (Physics.Raycast(shootingPosition.position, shootingPosition.forward, out hit, laserMaxLength))
         {
-            if (hit.collider.CompareTag("Enemigo"))
+            if (hit.collider.CompareTag("Enemigo") && !once)
             {
-                StartCoroutine(ShowLaser(shootingPosition.position, hit.point));
+                once = true;
                 damageDealer.CauseDamage(hit.collider.gameObject, "player");
+                StartCoroutine(ShowLaser(shootingPosition.position, hit.point));
+                
             }
             else
             {
@@ -70,6 +73,7 @@ public class ShootController : MonoBehaviour
         laserLine.SetPosition(1, endPosition);
         yield return new WaitForSeconds(laserDuration);
         laserLine.enabled = false;
+        once = false;
     }
 }
 

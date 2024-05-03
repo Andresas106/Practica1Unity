@@ -25,6 +25,8 @@ public class OnRangeInjuredBehavour : StateMachineBehaviour
         bool isPlayerClose = CheckPlayer(animator.transform);
         bool isPlayerFar = CheckPlayerFar(animator.transform);
         //Hay que poner que es falso el isTimeUp
+
+        animator.SetBool("IsPatrolling", false);
         animator.SetBool("IsOnRangeInjured", isPlayerClose);
         animator.SetBool("IsChasingInjured", isPlayerFar);
 
