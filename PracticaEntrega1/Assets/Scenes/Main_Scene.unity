@@ -194,7 +194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6350835}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21792471, y: -0.047743868, z: 0.005010643, w: 0.9747842}
+  m_LocalRotation: {x: 0.21792471, y: -0.0477439, z: 0.0050106463, w: 0.9747842}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1544,7 +1544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247419358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1953757, y: -0.04707875, z: 0.009390043, w: 0.97955287}
+  m_LocalRotation: {x: 0.1953757, y: -0.047078755, z: 0.009390043, w: 0.97955287}
   m_LocalPosition: {x: 0.38360596, y: 1.1691768, z: -3.9815636}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1756,6 +1756,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3cbeffabac5d9d409a09874bb821f4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1647497888}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3cbeffabac5d9d409a09874bb821f4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1647497889}
   m_SourcePrefab: {fileID: 100100000, guid: b3cbeffabac5d9d409a09874bb821f4a, type: 3}
 --- !u!1 &269169551 stripped
 GameObject:
@@ -2818,7 +2821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemydamage: 10
   Playerdamage: 20
-  player: {fileID: 173244253}
+  player: {fileID: 1143176702}
 --- !u!65 &413502695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4564,7 +4567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemydamage: 10
   Playerdamage: 20
-  player: {fileID: 2015595337}
+  player: {fileID: 1143176702}
 --- !u!1 &663080915
 GameObject:
   m_ObjectHideFlags: 0
@@ -9621,6 +9624,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8044669281949152778, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 555451783}
+    - targetCorrespondingSourceObject: {fileID: -8021001004253913084, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 2090063977}
     - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1633835134}
@@ -11703,6 +11709,11 @@ CapsuleCollider:
   m_Height: 790.2241
   m_Direction: 1
   m_Center: {x: -0.0005645752, y: 395.11212, z: -0.000015258789}
+--- !u!4 &1558339115 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8021001004253913084, guid: 56cf3c5b6c75abc458b40c319cca900d, type: 3}
+  m_PrefabInstance: {fileID: 1312669345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1563005079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 57194965486924603, guid: 8cc6c006f1a88834e9a00f3d624c0bf3, type: 3}
@@ -11800,7 +11811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566110254}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25152954, y: -0.047541853, z: 0.0066599627, w: 0.9666583}
+  m_LocalRotation: {x: 0.25152954, y: -0.04754186, z: 0.006659964, w: 0.9666583}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12294,6 +12305,9 @@ MonoBehaviour:
   laserWidth: 0.1
   laserMaxLength: 100
   laserDuration: 0.1
+  damageDealer: {fileID: 1647497889}
+  shootingPosition: {fileID: 2090063977}
+  laserTexture: {fileID: 2800000, guid: d7ad491e3f6696448a4a16cbd340c4c1, type: 3}
 --- !u!114 &1647497887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12316,7 +12330,7 @@ LineRenderer:
   m_GameObject: {fileID: 1647497885}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 0
@@ -12327,7 +12341,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a753ac83d314abf478dd8f99627a7761, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12358,8 +12372,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.024223328
+        value: 0.54032326
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -12410,6 +12424,20 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1647497889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647497885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b22a71fe80b4254c9fdfecd58e9c142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemydamage: 10
+  Playerdamage: 20
 --- !u!1 &1651068965
 GameObject:
   m_ObjectHideFlags: 0
@@ -22195,6 +22223,37 @@ CapsuleCollider:
   m_Height: 1218.9708
   m_Direction: 1
   m_Center: {x: -0.00048828125, y: 609.4855, z: 0.00024414062}
+--- !u!1 &2090063976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090063977}
+  m_Layer: 6
+  m_Name: shootingPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2090063977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090063976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.006899541, y: 0.021585487, z: 0.0017576198, w: 0.9997417}
+  m_LocalPosition: {x: 0.06, y: -0.28, z: 0.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1558339115}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2097826718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6513194483698013213, guid: 8cc6c006f1a88834e9a00f3d624c0bf3, type: 3}

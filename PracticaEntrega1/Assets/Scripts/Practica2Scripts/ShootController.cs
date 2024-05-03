@@ -4,69 +4,72 @@ using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
-    public LineRenderer laserLine; // Referencia al LineRenderer para el láser
-    public float laserWidth = 0.1f; // Ancho del láser
-    public float laserMaxLength = 100f; // Longitud máxima del láser
-    public float laserDuration = 0.1f; // Duración del láser visual
+    public LineRenderer laserLine;
+    public float laserWidth = 0.1f;
+    public float laserMaxLength = 100f;
+    public float laserDuration = 0.1f;
+    public GunDamageDealer damageDealer; // Cambiado de DamageDealer a GunDamageDealer
+    public Transform shootingPosition; // La posición desde la que se dispara
+    public Texture2D laserTexture; // Textura del rayo láser
 
     private InputManager inputManager;
     private bool AttackPressed;
+    private Transform gunTransform; // Referencia al transform de la pistola
 
     void Start()
     {
         inputManager = GetComponent<InputManager>();
         laserLine.startWidth = laserWidth;
         laserLine.endWidth = laserWidth;
+
+        // Obtener la referencia al transform de la pistola
+        gunTransform = transform.GetChild(0); // Asume que la pistola es el primer hijo del jugador
     }
 
     void Update()
     {
         AttackPressed = inputManager.IsAttackPressed;
 
-        if (AttackPressed) // Si es presiona la tecla de disparo
+        if (AttackPressed)
         {
-            Disparar(); // Llama al método de disparo
+            // Disparar solo si el botón de disparo está presionado
+            Disparar();
         }
     }
 
     void Disparar()
     {
-        RaycastHit hit; // Almacena información sobre la colisión del Raycast
+        RaycastHit hit;
 
-        // Lanza un Raycast desde la posición del jugador en la dirección hacia adelante
-        if (Physics.Raycast(transform.position, -transform.forward, out hit, laserMaxLength))
+        if (Physics.Raycast(shootingPosition.position, shootingPosition.forward, out hit, laserMaxLength))
         {
-            // Comprueba si el Raycast ha impactado en un enemigo
             if (hit.collider.CompareTag("Enemigo"))
             {
-                // Muestra el láser en la dirección del raycast
-                StartCoroutine(ShowLaser(transform.position, hit.point));
-
-                // Realiza acciones adicionales cuando se golpea un enemigo
-                // Puedes agregar aquí lógica para causar daño al enemigo, por ejemplo
-                Debug.Log("Ha hiteado al enemigo");
+                StartCoroutine(ShowLaser(shootingPosition.position, hit.point));
+                damageDealer.CauseDamage(hit.collider.gameObject, "player");
             }
             else
             {
-                // Muestra el láser en la dirección del raycast sin golpear un enemigo
-                StartCoroutine(ShowLaser(transform.position, hit.point));
+                StartCoroutine(ShowLaser(shootingPosition.position, hit.point));
             }
         }
         else
         {
-            // Si el raycast no golpea nada, muestra el láser hasta la distancia máxima
-            Vector3 endPosition = transform.position - transform.forward * laserMaxLength;
-            StartCoroutine(ShowLaser(transform.position, endPosition));
+            Vector3 endPosition = shootingPosition.position + shootingPosition.forward * laserMaxLength;
+            StartCoroutine(ShowLaser(shootingPosition.position, endPosition));
         }
     }
 
-    // Método para mostrar visualmente el láser
     IEnumerator ShowLaser(Vector3 startPosition, Vector3 endPosition)
     {
         laserLine.enabled = true;
+        laserLine.startWidth = laserWidth;
+        laserLine.endWidth = laserWidth;
+        laserLine.material.mainTexture = laserTexture;
         laserLine.SetPosition(0, startPosition);
         laserLine.SetPosition(1, endPosition);
         yield return new WaitForSeconds(laserDuration);
         laserLine.enabled = false;
     }
 }
+
