@@ -12,6 +12,16 @@ public class HealthBar : MonoBehaviour, ITakeDamage, IHealDamage
     public float maxHealth = 100f;
     public float health;
     private float lerpSpeed = 0.01f;
+    public AudioClip _audio;
+    public float volumen = 1f;
+
+    private SoundManager soundManager;
+
+    private void Awake()
+    {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,9 +53,12 @@ public class HealthBar : MonoBehaviour, ITakeDamage, IHealDamage
         else if(health <= 0)
         {
             Destroy(player);
+            soundManager.SeleccionAudio(0, 0.5f);
+
         }
         
     }
+
 
     public void HealDamage(float amount)
     {

@@ -21,7 +21,7 @@ public class UpperBodyAnimation : MonoBehaviour
     void Update()
     {
         // Encuentra todos los objetos con la etiqueta "Enemigo".
-        var enemies = GameObject.FindGameObjectsWithTag("Enemigo");
+        var enemies = GameObject.FindGameObjectsWithTag("target_enemigo");
 
         // Si no hay enemigos, no hacemos nada y salimos.
         if (enemies.Length == 0)
