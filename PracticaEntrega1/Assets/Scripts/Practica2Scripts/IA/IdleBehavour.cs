@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class IdleBehavour : StateMachineBehaviour
 {
-    //Calcular la distanci necesiutamos la posicion
+    
     Transform _player;
     float _timer;
+    //Llamo a la variable de la HealthBar
     HealthBar _healthBar;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -16,6 +17,7 @@ public class IdleBehavour : StateMachineBehaviour
         _player = GameObject.FindGameObjectWithTag("player").transform;
         //Se inicializa la variable _timer al inicializarse 
         _timer = 0;
+        //Llamo a la Healthbar del NPC
         _healthBar = animator.GetComponent<HealthBar>();
     }
 
@@ -28,7 +30,7 @@ public class IdleBehavour : StateMachineBehaviour
         bool isPlayerInjured = CheckHealth(animator.transform);
         bool paramExists = ContainsParam(animator, "IsChasingInjured");
 
-
+        //Dependiendo de lo que retornen las respetivas fucniones se activa una boleana del animator
         animator.SetBool("IsChasing", isPlayerClose);
         animator.SetBool("IsPatrolling", isTimeUp);
         if(paramExists)
@@ -39,7 +41,7 @@ public class IdleBehavour : StateMachineBehaviour
       
         
     }
-
+    //Comprobamos el estado de salud del NPC y la distancia al jugador
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
@@ -48,14 +50,14 @@ public class IdleBehavour : StateMachineBehaviour
 
     private bool CheckTime()
     {
-        //Incrementar el timer amb el temps que ha pasat desde l'ultim update
+        //Incrementar el timer con el tiempo que pasa desde el último update
         _timer += Time.deltaTime;
         return _timer > 2;
     }
 
     private bool CheckHealth(Transform mySelf)
     {
-        // Compara la salud actual con la salud máxima
+        // Compara la salud actual con la salud máxima si la variable _healthBar existe y devuelve tanto tanto el estado de salud como la distancia
         if (_healthBar != null)
         {
             float distance = Vector3.Distance(_player.position, mySelf.position);

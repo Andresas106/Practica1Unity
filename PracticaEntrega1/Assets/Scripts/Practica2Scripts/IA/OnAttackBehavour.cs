@@ -7,8 +7,6 @@ public class OnAttackBehavour : StateMachineBehaviour
 {
     Transform _player;
     float _timer;
-    private float Speed = 2;
-   
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,13 +20,12 @@ public class OnAttackBehavour : StateMachineBehaviour
     {
         //Check Triggers
         bool isTimeUp = CheckTime();
-
-        //Hay que poner que es falso el isTimeUp
+        //Cuando el tiempo termina pasa a IsOnRange
         animator.SetBool("IsOnRange", isTimeUp);
         //Do Stuff
         Move(animator.transform);
     }
-
+    //Se determina que mire todo el rato al jugador el enemigo 
      private void Move(Transform mySelf)
     {
         mySelf.LookAt(_player);

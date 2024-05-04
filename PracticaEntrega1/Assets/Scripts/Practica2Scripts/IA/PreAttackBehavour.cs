@@ -9,13 +9,15 @@ public class PreAttackBehavour : StateMachineBehaviour
 {
     Transform _player;
     float _timer;
-    private float Speed = 2;
+    //Referencia al script HealthBar
     HealthBar _healthBar;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //Detección del jugador por tag
         _player = GameObject.FindGameObjectWithTag("player").transform;
+        //Inicialización del timer
         _timer = 0;
         // Obtiene la referencia al script HealthBar del objeto del animator
         _healthBar = animator.GetComponent<HealthBar>();
@@ -28,13 +30,13 @@ public class PreAttackBehavour : StateMachineBehaviour
         bool isPlayerClose = CheckPlayer(animator.transform);
         bool isPlayerInjured = CheckHealth(animator.transform);
 
-        //Hay que poner que es falso el isTimeUp
+        //Se activan o no las boleanas si se corresponden o no con lo que se retorna de las funciones
         animator.SetBool("IsAttacking", isTimeUp);
         animator.SetBool("IsOnRange", isPlayerClose);
         animator.SetBool("IsOnRangeInjured", isPlayerInjured);
 
 
-        //Do Stuff
+        //Determina el punto hacia el que mira el personaje (en este caso al jugador)
         Move(animator.transform);
     }
 
@@ -42,23 +44,22 @@ public class PreAttackBehavour : StateMachineBehaviour
     {
         mySelf.LookAt(_player);
     }
-
+    //Se comprueba el estado de salud del NPC y su distancia con respecto al jugador
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
         return (_healthBar.health > (_healthBar.maxHealth * 0.5f)) && distance < 6;
     }
-
+    //Se comprueba el paso del tiempo i se incrementa el timer desde el último update
     private bool CheckTime()
     {
-        //Incrementar el timer amb el temps que ha pasat desde l'ultim update
         _timer += Time.deltaTime;
         return _timer > 2;
     }
 
     private bool CheckHealth(Transform mySelf)
     {
-        // Compara la salud actual con la salud máxima
+        // Compara la salud actual con la salud máxima. Devuelve tanto la salud como la distancia con respecto al jugador
         if (_healthBar != null)
         {
             float distance = Vector3.Distance(_player.position, mySelf.position);

@@ -7,6 +7,7 @@ public class OnRangeInjuredBehavour : StateMachineBehaviour
 {
     Transform _player;
     float _timer;
+    //Speed inferior porque está herido 
     private float Speed = 2;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,15 +22,12 @@ public class OnRangeInjuredBehavour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Check Triggers
-
         bool isPlayerClose = CheckPlayer(animator.transform);
         bool isPlayerFar = CheckPlayerFar(animator.transform);
-        //Hay que poner que es falso el isTimeUp
-
+        
         animator.SetBool("IsPatrolling", false);
         animator.SetBool("IsOnRangeInjured", isPlayerClose);
         animator.SetBool("IsChasingInjured", isPlayerFar);
-
 
         //Do Stuff
         Move(animator.transform);
@@ -53,12 +51,13 @@ public class OnRangeInjuredBehavour : StateMachineBehaviour
         // Mueve al enemigo hacia adelante en la dirección calculada
         mySelf.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
-
+    //Detecta que la distancia al jugador sea inferior a 2
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
         return distance < 2;
     }
+    //Detecta que la distancia al jugador sea inferior a 6
     private bool CheckPlayerFar(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);

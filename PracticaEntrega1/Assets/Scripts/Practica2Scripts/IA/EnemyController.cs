@@ -13,7 +13,8 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         targetPoint = 0;
-        animator = GetComponent<Animator>(); // Obtener el componente Animator
+        // Obtener el componente Animator
+        animator = GetComponent<Animator>(); 
     }
 
     void Update()

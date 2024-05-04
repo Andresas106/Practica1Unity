@@ -7,12 +7,13 @@ public class PostAttackBehavour : StateMachineBehaviour
 {
     Transform _player;
     float _timer;
-    private float Speed = 2;
+    //Referencia al script HealthBar
     HealthBar _healthBar;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //Detección del jugador por tag
         _player = GameObject.FindGameObjectWithTag("player").transform;
         _timer = 0;
         // Obtiene la referencia al script HealthBar del objeto del animator
@@ -25,13 +26,13 @@ public class PostAttackBehavour : StateMachineBehaviour
         bool isTimeUp = CheckTime();
         bool isPlayerClose = CheckPlayer(animator.transform);
         bool isPlayerInjured = CheckHealth(animator.transform);
-        //Hay que poner que es falso el isTimeUp
+        //Se activan o no las boleanas si se corresponden o no con lo que se retorna de las funciones
         animator.SetBool("IsOnRange", !isPlayerClose);
         animator.SetBool("IsAttacking", isPlayerClose);
         animator.SetBool("IsOnRangeInjured", isPlayerInjured);
 
 
-        //Do Stuff
+        //Mirar al jugador
         Move(animator.transform);
     }
 
@@ -45,7 +46,7 @@ public class PostAttackBehavour : StateMachineBehaviour
         float distance = Vector3.Distance(_player.position, mySelf.position);
         return (_healthBar.health > (_healthBar.maxHealth * 0.5f)) && distance < 3;
     }
-
+    //Se comprueba el paso del tiempo i se incrementa el timer desde el último update
     private bool CheckTime()
     {
         //Incrementar el timer amb el temps que ha pasat desde l'ultim update
@@ -55,7 +56,7 @@ public class PostAttackBehavour : StateMachineBehaviour
 
     private bool CheckHealth(Transform mySelf)
     {
-        // Compara la salud actual con la salud máxima
+        // Compara la salud actual con la salud máxima. Devuelve tanto la salud como la distancia con respecto al jugador
         if (_healthBar != null)
         {
             float distance = Vector3.Distance(_player.position, mySelf.position);

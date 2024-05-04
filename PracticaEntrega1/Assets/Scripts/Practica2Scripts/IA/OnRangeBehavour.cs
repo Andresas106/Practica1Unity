@@ -50,12 +50,13 @@ public class OnRangeBehavour : StateMachineBehaviour
         // Mueve al enemigo hacia adelante en la dirección calculada
         mySelf.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
-
+    //Detecta que la distancia con respecto al jugador sea inferior a 2
     private bool CheckPlayer(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
         return distance < 2;
     }
+    //Detecta que la distancia con respecto al jugador sea inferior a 6
     private bool CheckPlayerFar(Transform mySelf)
     {
         float distance = Vector3.Distance(_player.position, mySelf.position);
