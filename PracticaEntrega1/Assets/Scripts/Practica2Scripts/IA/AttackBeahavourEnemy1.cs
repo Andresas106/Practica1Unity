@@ -8,13 +8,12 @@ using UnityEngine;
 public class AttackBehavourEnemy1 : StateMachineBehaviour
 {
     Transform _player;
-    float _timer;
-
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("player").transform;
-        _timer = 0;
+        
         // Se inicia el ataque mirando a un punto random
         Vector3 rdmPointInPlane = new Vector3(Random.Range(-100, 100), animator.transform.position.y, Random.Range(-100, 100));
         animator.transform.LookAt(rdmPointInPlane);

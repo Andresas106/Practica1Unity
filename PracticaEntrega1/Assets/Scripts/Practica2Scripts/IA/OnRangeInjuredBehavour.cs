@@ -6,7 +6,6 @@ using UnityEngine;
 public class OnRangeInjuredBehavour : StateMachineBehaviour
 {
     Transform _player;
-    float _timer;
     //Speed inferior porque está herido 
     private float Speed = 2;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -14,8 +13,6 @@ public class OnRangeInjuredBehavour : StateMachineBehaviour
     {
         //Detección de jugador. 
         _player = GameObject.FindGameObjectWithTag("player").transform;
-        //Tiempo en 0
-        _timer = 0;
 
     }
 

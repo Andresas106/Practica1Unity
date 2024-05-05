@@ -6,15 +6,13 @@ using UnityEngine;
 public class OnRangeBehavour : StateMachineBehaviour
 {
     Transform _player;
-    float _timer;
     private float Speed = 3;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Detección de jugador. 
         _player = GameObject.FindGameObjectWithTag("player").transform;
-        //Tiempo en 0
-        _timer = 0;
 
     }
 
