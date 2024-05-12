@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 509457047a6e2564da29a9bf4ed8357a, type: 2}
     - target: {fileID: 919132149155446097, guid: 637b581b03821b84faf07dbeb7a00737, type: 3}
       propertyPath: m_Name
-      value: Apple (1)
+      value: ApplePrefab
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 637b581b03821b84faf07dbeb7a00737, type: 3}
       propertyPath: m_TagString
