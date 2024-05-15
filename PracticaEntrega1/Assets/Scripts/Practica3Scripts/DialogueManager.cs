@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialodManagment : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
-    public Animator dialogAnimator;
-    public static DialodManagment Instance;
+    public Animator dialogueAnimator;
+
+    public static DialogueManager Instance;
+
     private DialogueNode _currentNode;
+
     private GameObject _talker;
-    public TextMeshProUGUI nameText;
+
+    public TextMeshProUGUI NameText;
     public TextMeshProUGUI SpeechText;
     public TextMeshProUGUI[] OptionsText;
     // Start is called before the first frame update
@@ -24,27 +28,28 @@ public class DialodManagment : MonoBehaviour
         {
             Destroy(this);
         }
+
     }
 
-    public void StartDialog(Conversation conversation, GameObject talker)
+
+    public void StartDialogue(Conversation conversation, GameObject talker)
     {
         _talker = talker;
-        _currentNode = conversation.StarNode;
-        nameText.text = conversation.Name;
+        _currentNode = conversation.StartNode;
+        NameText.text = conversation.Name;
         SetNode(_currentNode);
-        showDialog();
+        ShowDialogue();
     }
 
     private void SetNode(DialogueNode currentNode)
     {
-        SpeechText.text = currentNode.text;
-        //Ahora a casa botón le tenemos que poner sus opciones y si no desactivarlos. 
+        SpeechText.text = currentNode.Text;
         for (int i = 0; i < OptionsText.Length; i++)
         {
             if (i < currentNode.Options.Count)
             {
                 OptionsText[i].transform.parent.gameObject.SetActive(true);
-                OptionsText[i].text = currentNode.Options[i].text;
+                OptionsText[i].text = currentNode.Options[i].Text;
             }
             else
             {
@@ -53,12 +58,12 @@ public class DialodManagment : MonoBehaviour
         }
     }
 
-    private void showDialog()
+    private void ShowDialogue()
     {
-        dialogAnimator.SetBool("Show", true);
+        dialogueAnimator.SetBool("Show", true);
     }
-    public void HideDialog()
+    public void HideDialogue()
     {
-        dialogAnimator.SetBool("Hide", true);
+        dialogueAnimator.SetBool("Show", false);
     }
 }
