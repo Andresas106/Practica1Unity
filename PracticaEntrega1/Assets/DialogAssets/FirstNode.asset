@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Sou Unity-chan la guardiana de este juego
   Options:
-  - Text: "\xBFMenuda tonta no?"
-    NextNode: {fileID: 0}
   - Text: Yo soy un cupcake de frambuesa, no te jode
     NextNode: {fileID: 11400000, guid: fef242193ae44ca4980aa747e4cb9971, type: 2}
+  - Text: "\xBFMenuda tonta no?"
+    NextNode: {fileID: 11400000, guid: 580a8b0a5ca44d44297400084400ecc3, type: 2}
   - Text: Me la pela
-    NextNode: {fileID: 11400000, guid: fef242193ae44ca4980aa747e4cb9971, type: 2}
+    NextNode: {fileID: 11400000, guid: f832be260fbb1e642a11c3e79213ae7f, type: 2}
   - Text: 'Encantadx, mi nombre es Erika-chan '
-    NextNode: {fileID: 11400000, guid: fef242193ae44ca4980aa747e4cb9971, type: 2}
+    NextNode: {fileID: 11400000, guid: 2d80a8f483b675843a23675d58f81a83, type: 2}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ce343de7d8c924aab569d952fb1c9e, type: 3}
+  m_Name: ThirdNode_OptionB.1
+  m_EditorClassIdentifier: 
+  Text: "\xA1\xA1Como sigas as\xED llamo a la guardia real para que te den una buena
+    lecci\xF3n!!"
+  Options:
+  - Text: Bueno, entonces mejor me voy
+    NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}
+  - Text: "Ni te molestes, \xA1\xA1voy yo misma a buscarlos!!"
+    NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}

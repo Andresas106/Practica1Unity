@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75ce343de7d8c924aab569d952fb1c9e, type: 3}
-  m_Name: "ThirdNode_Seducci\xF3n"
+  m_Name: ThirdNode_A.1
   m_EditorClassIdentifier: 
-  Text: "Mu\xF1eca te invito a un bubblea tea en la posada de aqu\xED al lado"
+  Text: "Mira que hay que ser desagradable. \xA1\xA1\xA1Eres una maleducada!!!"
   Options:
-  - Text: Bofff, de una
-    NextNode: {fileID: 0}
-  - Text: Naaa, me voy a pelear con algunos malotes
-    NextNode: {fileID: 0}
+  - Text: "Le pido disculpas mi se\xF1ora."
+    NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}
+  - Text: "\xA1Y QUEEEEEE!!!"
+    NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}

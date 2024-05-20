@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI SpeechText;
     public TextMeshProUGUI[] OptionsText;
-    // Start is called before the first frame update
+
     void Awake()
     {
         if (Instance == null)
@@ -29,9 +29,7 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(this);
         }
-
     }
-
 
     public void StartDialogue(Conversation conversation, GameObject talker)
     {
@@ -44,7 +42,14 @@ public class DialogueManager : MonoBehaviour
 
     private void SetNode(DialogueNode currentNode)
     {
-        _currentNode = currentNode; // Actualizamos el nodo actual
+        _currentNode = currentNode;
+
+        if (_currentNode is EndNode)
+        {
+            DoEndNode(_currentNode as EndNode);
+            return;
+        }
+
         SpeechText.text = currentNode.Text;
 
         for (int i = 0; i < OptionsText.Length; i++)
@@ -56,10 +61,8 @@ public class DialogueManager : MonoBehaviour
                 OptionsText[i].transform.parent.gameObject.SetActive(true);
                 OptionsText[i].text = currentNode.Options[i].Text;
 
-                // Eliminamos cualquier listener anterior para evitar múltiples adiciones
                 optionButton.onClick.RemoveAllListeners();
 
-                // Capturamos el índice para el evento onClick
                 int optionIndex = i;
                 optionButton.onClick.AddListener(() => OnOptionClicked(optionIndex));
             }
@@ -79,10 +82,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void DoEndNode(EndNode currentNode)
+    {
+        currentNode.OnChosen(_talker);
+        HideDialogue();
+    }
+
     private void ShowDialogue()
     {
         dialogueAnimator.SetBool("Show", true);
     }
+
     public void HideDialogue()
     {
         dialogueAnimator.SetBool("Show", false);

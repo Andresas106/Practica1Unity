@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75ce343de7d8c924aab569d952fb1c9e, type: 3}
-  m_Name: SecondNode_cupcake
+  m_Name: SecondNode_OptionB
   m_EditorClassIdentifier: 
-  Text: "Pues a mi me molan las moras, pero m\xE1s tu bebe"
+  Text: "\xA1Jolin, todos los viajeros que vienen a hablar conmigo son igual de desagradables!"
   Options:
-  - Text: Me la pela
-    NextNode: {fileID: 11400000, guid: 21288332742e2ee449f38e2a8f18afdb, type: 2}
-  - Text: Que rico papi
-    NextNode: {fileID: 11400000, guid: 0d6b0dc903e444648ae596b4869d3efb, type: 2}
+  - Text: "\xBFC\xF3mo?\xBFAcaso quieres pelea?"
+    NextNode: {fileID: 11400000, guid: c689fc7a17a839446992ed5db8f54378, type: 2}
+  - Text: Ai, perdona, es que he tenido un mal dia
+    NextNode: {fileID: 11400000, guid: 237d0e2391f76fc49b4a261e0821f76b, type: 2}

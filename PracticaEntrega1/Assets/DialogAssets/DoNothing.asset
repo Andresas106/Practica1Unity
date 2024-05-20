@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ce343de7d8c924aab569d952fb1c9e, type: 3}
-  m_Name: SecondNode_Tonta
+  m_Script: {fileID: 11500000, guid: aefc599e3aefea740bdb2b891ca41ffd, type: 3}
+  m_Name: DoNothing
   m_EditorClassIdentifier: 
-  Text: 
+  Text: End
   Options: []
