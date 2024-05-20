@@ -9,6 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (other.tag == "player")
         {
+            Debug.Log("Jugador detectado");
             DialogueManager.Instance.StartDialogue(Conversation, gameObject);
         }
     }

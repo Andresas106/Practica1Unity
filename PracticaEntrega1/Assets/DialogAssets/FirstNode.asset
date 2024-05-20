@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75ce343de7d8c924aab569d952fb1c9e, type: 3}
-  m_Name: NewNode
+  m_Name: FirstNode
   m_EditorClassIdentifier: 
   Text: Sou Unity-chan la guardiana de este juego
   Options:
-  - Text: 
+  - Text: "\xBFMenuda tonta no?"
     NextNode: {fileID: 0}
-  - Text: 
-    NextNode: {fileID: 0}
+  - Text: Yo soy un cupcake de frambuesa, no te jode
+    NextNode: {fileID: 11400000, guid: fef242193ae44ca4980aa747e4cb9971, type: 2}
+  - Text: Me la pela
+    NextNode: {fileID: 11400000, guid: fef242193ae44ca4980aa747e4cb9971, type: 2}
+  - Text: 'Encantadx, mi nombre es Erika-chan '
+    NextNode: {fileID: 11400000, guid: fef242193ae44ca4980aa747e4cb9971, type: 2}

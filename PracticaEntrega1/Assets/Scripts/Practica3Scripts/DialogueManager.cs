@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class DialogueManager : MonoBehaviour
 {
@@ -43,18 +44,38 @@ public class DialogueManager : MonoBehaviour
 
     private void SetNode(DialogueNode currentNode)
     {
+        _currentNode = currentNode; // Actualizamos el nodo actual
         SpeechText.text = currentNode.Text;
+
         for (int i = 0; i < OptionsText.Length; i++)
         {
+            Button optionButton = OptionsText[i].transform.parent.GetComponent<Button>();
+
             if (i < currentNode.Options.Count)
             {
                 OptionsText[i].transform.parent.gameObject.SetActive(true);
                 OptionsText[i].text = currentNode.Options[i].Text;
+
+                // Eliminamos cualquier listener anterior para evitar múltiples adiciones
+                optionButton.onClick.RemoveAllListeners();
+
+                // Capturamos el índice para el evento onClick
+                int optionIndex = i;
+                optionButton.onClick.AddListener(() => OnOptionClicked(optionIndex));
             }
             else
             {
                 OptionsText[i].transform.parent.gameObject.SetActive(false);
             }
+        }
+    }
+
+    private void OnOptionClicked(int optionIndex)
+    {
+        if (optionIndex < _currentNode.Options.Count)
+        {
+            DialogueOption selectedOption = _currentNode.Options[optionIndex];
+            SetNode(selectedOption.NextNode);
         }
     }
 
