@@ -11,6 +11,7 @@ public class ShootController : MonoBehaviour
     public GunDamageDealer damageDealer; // Cambiado de DamageDealer a GunDamageDealer
     public Transform shootingPosition; // La posición desde la que se dispara
     public Texture2D laserTexture; // Textura del rayo láser
+    public GameObject hitVFXPrefab; // Prefab del VFX que se generará en el impacto
 
     private InputManager inputManager;
     private bool AttackPressed;
@@ -57,11 +58,12 @@ public class ShootController : MonoBehaviour
                 once = true;
                 damageDealer.CauseDamage(hit.collider.gameObject, "player");
                 StartCoroutine(ShowLaser(shootingPosition.position, hit.point));
-                
+                Instantiate(hitVFXPrefab, hit.point, Quaternion.identity); // Instanciar VFX en la posición de impacto
             }
             else
             {
                 StartCoroutine(ShowLaser(shootingPosition.position, hit.point));
+                Instantiate(hitVFXPrefab, hit.point, Quaternion.identity); // Instanciar VFX en la posición de impacto
             }
         }
         else
