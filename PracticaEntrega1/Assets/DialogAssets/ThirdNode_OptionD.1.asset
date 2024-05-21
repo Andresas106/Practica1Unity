@@ -15,6 +15,6 @@ MonoBehaviour:
   Text: Pues ten cuidado porque en el bosque hay un ogro muy violento
   Options:
   - Text: "\xA1\xA1Ostras, muchas gracias por avisar!!"
-    NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}
+    NextNode: {fileID: 11400000, guid: c36952125f2d38c4b97fa2c1673477e2, type: 2}
   - Text: "Que miedo, yo por ah\xED no paso"
     NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}

@@ -16,6 +16,6 @@ MonoBehaviour:
     muy violento
   Options:
   - Text: "Lo tendr\xE9 en cuenta, gracias"
-    NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}
+    NextNode: {fileID: 11400000, guid: c36952125f2d38c4b97fa2c1673477e2, type: 2}
   - Text: "No te preocupes, \xA1yo me encargo!"
     NextNode: {fileID: 11400000, guid: b39875c9662ea9f428162faa54c228d6, type: 2}
