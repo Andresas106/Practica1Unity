@@ -21,7 +21,7 @@ public class MovementController : MonoBehaviour
         {
             _timer += Time.deltaTime; // Incrementar _timer con deltaTime
 
-            if (_timer > 2)
+            if (_timer > 4)
             {
                 animator.SetBool("Happy", false);
                 animator.SetBool("Angry", false);
