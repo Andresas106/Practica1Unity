@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -19,9 +17,13 @@ public class TimeController : MonoBehaviour
     [SerializeField] private Light moonLight;
     [SerializeField] private float maxMoonLightIntensity = 0.5f;
 
+    [SerializeField] private GameObject lightsToActivate; // Añade referencia al GameObject de las luces a activar a las 8 PM
+
     private DateTime currentTime;
     private TimeSpan sunriseTime;
     private TimeSpan sunsetTime;
+
+    private bool lightsActivated = false; // Controla si las luces ya se activaron
 
     void Start()
     {
@@ -40,6 +42,8 @@ public class TimeController : MonoBehaviour
         UpdateTimeOfDay();
         RotateSun();
         UpdateLightSettings();
+
+        CheckAndActivateLights(); // Llama a la función para verificar y activar las luces
     }
 
     private void UpdateTimeOfDay()
@@ -100,5 +104,19 @@ public class TimeController : MonoBehaviour
         }
 
         return difference;
+    }
+
+    private void CheckAndActivateLights()
+    {
+        if (!lightsActivated && currentTime.Hour == 20) // Verifica si son las 8 PM y las luces aún no se han activado
+        {
+            lightsToActivate.SetActive(true); // Activa las luces
+            lightsActivated = true; // Marca las luces como activadas
+        }
+        else if (lightsActivated && currentTime.Hour == sunriseHour) // Verifica si es la hora del amanecer y las luces están activadas
+        {
+            lightsToActivate.SetActive(false); // Desactiva las luces
+            lightsActivated = false; // Marca las luces como desactivadas
+        }
     }
 }
