@@ -16,5 +16,7 @@ MonoBehaviour:
   Options:
   - Text: Bofff, de una
     NextNode: {fileID: 11400000, guid: c36952125f2d38c4b97fa2c1673477e2, type: 2}
+    BackgroundColor: {r: 0.85490197, g: 0.5294118, b: 0.8117647, a: 1}
   - Text: Naaa, me voy a pelear con algunos malotes
     NextNode: {fileID: 11400000, guid: 385ab63aaa0f55c43976a6c722dfbfc4, type: 2}
+    BackgroundColor: {r: 0.6784314, g: 0.90588236, b: 0.91764706, a: 1}

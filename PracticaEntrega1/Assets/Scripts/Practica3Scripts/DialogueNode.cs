@@ -13,4 +13,5 @@ public class DialogueOption
 {
     public string Text;
     public DialogueNode NextNode;
+    public Color BackgroundColor; 
 }

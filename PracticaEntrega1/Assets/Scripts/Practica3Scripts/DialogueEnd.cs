@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EndNode : DialogueNode
 {
+    public AudioClip endAudio;
     public virtual void OnChosen(GameObject talker)
     {
         // Implementación genérica o vacía

@@ -16,5 +16,7 @@ MonoBehaviour:
   Options:
   - Text: Me lo suelen decir bastante la verdad
     NextNode: {fileID: 11400000, guid: d13399b4e07d4ff43a1dd9db7f4a9e3f, type: 2}
+    BackgroundColor: {r: 0.75686276, g: 0.7176471, b: 0.58431375, a: 1}
   - Text: "\xA1\xBFSer\xE1s sinverguenza, te estas riendo de mi?!"
     NextNode: {fileID: 11400000, guid: 74e836d14108b974da88d17cc71245d6, type: 2}
+    BackgroundColor: {r: 0.89411765, g: 0.4509804, b: 0.4117647, a: 1}

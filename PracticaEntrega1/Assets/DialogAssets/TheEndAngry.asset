@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TheEndAngry
   Text: 
   Options: []
+  endAudio: {fileID: 8300000, guid: 548ef0176d3f2334b9316fba2aaddd61, type: 3}

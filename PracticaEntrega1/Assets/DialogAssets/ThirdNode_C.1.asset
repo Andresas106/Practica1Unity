@@ -16,5 +16,7 @@ MonoBehaviour:
   Options:
   - Text: "\xA1\xA1Pero que buena idea!!"
     NextNode: {fileID: 11400000, guid: c36952125f2d38c4b97fa2c1673477e2, type: 2}
+    BackgroundColor: {r: 0.75294125, g: 0.7058824, b: 0.58431375, a: 1}
   - Text: Naa, no me apetece
     NextNode: {fileID: 11400000, guid: 385ab63aaa0f55c43976a6c722dfbfc4, type: 2}
+    BackgroundColor: {r: 0.6784314, g: 0.90588236, b: 0.91764706, a: 1}

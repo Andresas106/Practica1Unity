@@ -7,4 +7,5 @@ public class Conversation : ScriptableObject
 {
     public string Name;
     public DialogueNode StartNode;
+    public Color FirstNodeBackgroundColor;
 }

@@ -16,5 +16,7 @@ MonoBehaviour:
   Options:
   - Text: No, solo estoy de paso
     NextNode: {fileID: 11400000, guid: 16d0ef11004c6694c9d3aea35b1ab3fa, type: 2}
+    BackgroundColor: {r: 0.75294125, g: 0.7058824, b: 0.58431375, a: 1}
   - Text: Si, voy hacia el castillo
     NextNode: {fileID: 11400000, guid: 775b2080c973e8b47bedfcc66e63ef57, type: 2}
+    BackgroundColor: {r: 0.7568628, g: 0.70980394, b: 0.5882353, a: 1}

@@ -17,5 +17,7 @@ MonoBehaviour:
   Options:
   - Text: Bueno, entonces mejor me voy
     NextNode: {fileID: 11400000, guid: 2fc7f4333c5c8b84e822212814cecfad, type: 2}
+    BackgroundColor: {r: 0.75294125, g: 0.7058824, b: 0.58431375, a: 1}
   - Text: "Ni te molestes, \xA1\xA1voy yo misma a buscarlos!!"
     NextNode: {fileID: 11400000, guid: 385ab63aaa0f55c43976a6c722dfbfc4, type: 2}
+    BackgroundColor: {r: 0.6784314, g: 0.90588236, b: 0.91764706, a: 1}
