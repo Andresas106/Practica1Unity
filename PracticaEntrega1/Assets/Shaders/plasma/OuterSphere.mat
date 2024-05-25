@@ -89,7 +89,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BoarderPower: 0.5
+    - _BoarderPower: 3
     - _BoarderSize: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -124,11 +124,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BoarderColor: {r: 0.049897887, g: 0, b: 2.670157, a: 1}
+    - _BoarderColor: {r: 0.102362156, g: 1, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _TextureColor: {r: 0.8867924, g: 0.07786732, b: 0.054378804, a: 0}
+    - _TextureColor: {r: 0.49056602, g: 0.1643115, b: 0.12726949, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5347575566666876643
 MonoBehaviour:

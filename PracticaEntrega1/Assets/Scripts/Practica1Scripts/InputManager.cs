@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     public bool IsAttackPressed { get; private set; }
     public bool IsArma1Pressed { get; private set; }
     public bool IsArma2Pressed { get; private set; }
+    public bool IsPausePressed { get; private set; }
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,11 +49,26 @@ public class InputManager : MonoBehaviour
         input.Player.Arma2.canceled += onArma2Input;
 
 
+        input.Player.Pause.performed += onPauseInput;
+
     }
+
+    void Update()
+    {
+        IsPausePressed = false;
+    }
+
 
     void FixedUpdate()
     {
+        
         IsAttackPressed = false;
+
+    }
+
+    private void onPauseInput(InputAction.CallbackContext context)
+    {
+        IsPausePressed = context.ReadValueAsButton();
     }
 
     private void onArma2Input(InputAction.CallbackContext context)

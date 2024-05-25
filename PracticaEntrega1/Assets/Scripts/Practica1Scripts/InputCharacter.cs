@@ -98,6 +98,15 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""703ba6b2-336b-4a04-8a48-bfcb42ee1bfe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -287,6 +296,17 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
                     ""action"": ""Arma2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7451bacc-a805-46eb-9b1f-ba276bc81865"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +346,7 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Arma1 = m_Player.FindAction("Arma1", throwIfNotFound: true);
         m_Player_Arma2 = m_Player.FindAction("Arma2", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -395,6 +416,7 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Arma1;
     private readonly InputAction m_Player_Arma2;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @InputCharacter m_Wrapper;
@@ -407,6 +429,7 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Arma1 => m_Wrapper.m_Player_Arma1;
         public InputAction @Arma2 => m_Wrapper.m_Player_Arma2;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,6 +463,9 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
             @Arma2.started += instance.OnArma2;
             @Arma2.performed += instance.OnArma2;
             @Arma2.canceled += instance.OnArma2;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -468,6 +494,9 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
             @Arma2.started -= instance.OnArma2;
             @Arma2.performed -= instance.OnArma2;
             @Arma2.canceled -= instance.OnArma2;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -513,5 +542,6 @@ public partial class @InputCharacter: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnArma1(InputAction.CallbackContext context);
         void OnArma2(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
