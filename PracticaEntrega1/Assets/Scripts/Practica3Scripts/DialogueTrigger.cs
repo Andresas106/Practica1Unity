@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    //Detección de jugador cuando entra en el Trigger del NPC
     public Conversation Conversation;
     private void OnTriggerEnter(Collider other)
     {
