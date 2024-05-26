@@ -138,5 +138,9 @@ public class DialogueManager : MonoBehaviour
     public void HideDialogue()
     {
         dialogueAnimator.SetBool("Show", false);
+        // Reiniciar el nodo actual para comenzar desde el principio
+        _currentNode = null;
+        // Reiniciar el GameObject que está hablando
+        _talker = null; 
     }
 }

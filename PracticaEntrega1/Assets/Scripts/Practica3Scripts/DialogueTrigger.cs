@@ -14,4 +14,12 @@ public class DialogueTrigger : MonoBehaviour
             DialogueManager.Instance.StartDialogue(Conversation, gameObject);
         }
     }
+    //Deteccion de si el jugador sale del area del trigger
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("player"))
+        {
+            DialogueManager.Instance.HideDialogue();
+        }
+    }
 }
