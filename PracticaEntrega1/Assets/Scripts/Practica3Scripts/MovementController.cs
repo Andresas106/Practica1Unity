@@ -6,20 +6,24 @@ public class MovementController : MonoBehaviour
 {
     Animator animator;
     float _timer;
-    bool isTheEnd; // Bandera para verificar si Happy() fue llamado
+    // Boleana para verificar si se ha llegado al final
+    bool isTheEnd; 
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        _timer = 0f; // Inicializar _timer
-        isTheEnd = false; // Inicializar la bandera
+        // Inicializar _timer
+        _timer = 0f; 
+        // Inicializar isTheEnd
+        isTheEnd = false; 
     }
 
     void Update()
     {
         if (isTheEnd)
         {
-            _timer += Time.deltaTime; // Incrementar _timer con deltaTime
+            // Incrementar _timer 
+            _timer += Time.deltaTime; 
 
             if (_timer > 4)
             {
@@ -27,9 +31,10 @@ public class MovementController : MonoBehaviour
                 animator.SetBool("Angry", false);
                 animator.SetBool("Victory", false);
                 animator.SetBool("Defeat", false);
-
-                isTheEnd = false; // Resetear la bandera
-                _timer = 0f; // Reiniciar el temporizador
+                // Resetear isTheEnd
+                isTheEnd = false;
+                // Reiniciar el temporizador
+                _timer = 0f; 
             }
         }
     }
@@ -37,29 +42,33 @@ public class MovementController : MonoBehaviour
     public void Happy()
     {
         animator.SetBool("Happy", true);
-
-        isTheEnd = true; // Activar la bandera
-        _timer = 0f; // Reiniciar el temporizador al llamar Happy()
+        // Activar
+        isTheEnd = true;
+        // Reiniciar el temporizador al llamar Happy()
+        _timer = 0f; 
     }
     public void Angry()
     {
         animator.SetBool("Angry", true);
-
-        isTheEnd = true; // Activar la bandera
-        _timer = 0f; // Reiniciar el temporizador al llamar Happy()
+        // Activar
+        isTheEnd = true;
+        // Reiniciar el temporizador al llamar Angry()
+        _timer = 0f; 
     }
     public void Victory()
     {
         animator.SetBool("Victory", true);
-
-        isTheEnd = true; // Activar la bandera
-        _timer = 0f; // Reiniciar el temporizador al llamar Happy()
+        // Activar 
+        isTheEnd = true;
+        // Reiniciar el temporizador al llamar Victory()
+        _timer = 0f; 
     }
     public void Defeat()
     {
         animator.SetBool("Defeat", true);
-
-        isTheEnd = true; // Activar la bandera
-        _timer = 0f; // Reiniciar el temporizador al llamar Happy()
+        // Activar 
+        isTheEnd = true;
+        // Reiniciar el temporizador al llamar Defeat()
+        _timer = 0f; 
     }
 }

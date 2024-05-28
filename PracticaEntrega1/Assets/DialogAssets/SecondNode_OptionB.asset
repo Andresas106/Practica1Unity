@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ce343de7d8c924aab569d952fb1c9e, type: 3}
   m_Name: SecondNode_OptionB
   m_EditorClassIdentifier: 
-  Text: "\xA1Jolin, todos los viajeros que vienen a hablar conmigo son igual de desagradables!"
+  Text: "\xA1Jol\xEDn, todos los viajeros que vienen a hablar conmigo son igual de
+    desagradables!"
   Options:
   - Text: "\xBFC\xF3mo?\xBFAcaso quieres pelea?"
     NextNode: {fileID: 11400000, guid: c689fc7a17a839446992ed5db8f54378, type: 2}
     BackgroundColor: {r: 0.89411765, g: 0.4509804, b: 0.4117647, a: 1}
-  - Text: Ai, perdona, es que he tenido un mal dia
+  - Text: "Ay, perdona, es que he tenido un mal d\xEDa"
     NextNode: {fileID: 11400000, guid: 237d0e2391f76fc49b4a261e0821f76b, type: 2}
     BackgroundColor: {r: 0.6784314, g: 0.9058824, b: 0.9176471, a: 1}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ce343de7d8c924aab569d952fb1c9e, type: 3}
   m_Name: FirstNode
   m_EditorClassIdentifier: 
-  Text: Sou Unity-chan la guardiana de este juego
+  Text: Soy Unity-chan la guardiana de este juego
   Options:
   - Text: Yo soy un cupcake de frambuesa, no te jode
     NextNode: {fileID: 11400000, guid: fef242193ae44ca4980aa747e4cb9971, type: 2}
