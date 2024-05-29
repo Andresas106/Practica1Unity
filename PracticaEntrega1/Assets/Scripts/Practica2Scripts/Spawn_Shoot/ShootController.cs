@@ -18,12 +18,6 @@ public class ShootController : MonoBehaviour
     private Transform gunTransform; // Referencia al transform de la pistola
     private bool once = false;
 
-    private SoundManager soundManager;
-
-    private void Awake()
-    {
-        soundManager = FindObjectOfType<SoundManager>();
-    }
 
     void Start()
     {
@@ -43,7 +37,6 @@ public class ShootController : MonoBehaviour
         {
             // Disparar solo si el botón de disparo está presionado
             Disparar();
-            soundManager.SeleccionAudio(2, 0.5f);
         }
     }
 

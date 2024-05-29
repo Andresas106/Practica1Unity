@@ -20,14 +20,6 @@ public class AttackController: MonoBehaviour
     public GameObject triggerLeg;// Referencia al contacto del ataque
 
    
-    private SoundManager soundManager; // Al controlador de sonidos
-
-    private void Awake()
-    {
-        soundManager = FindObjectOfType<SoundManager>();// Encuentra la referencia al SoundManager para reproducir sonidos
-    }
-
-   
     void Start()
     {
         // Inicializa referencias a los componentes de entrada y animación
@@ -50,7 +42,6 @@ public class AttackController: MonoBehaviour
                 animator.SetBool("isAttacking", true);// Activa la animación de ataque
                 triggerLeg.SetActive(true);
                 StartCoroutine(wait());
-                soundManager.SeleccionAudio(1, 0.3f);// Reproduce un sonido de ataquede patada
 
             }
             else if ((isWalkingPressed || isRunPressed || isJumpPressed || isDancePressed) && !isAttackPressed)
